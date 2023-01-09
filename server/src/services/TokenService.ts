@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import jwt, {JwtPayload} from 'jsonwebtoken'
 import Token from "../models/Token";
 
 class TokenService {
@@ -8,6 +8,22 @@ class TokenService {
 		return {
 			accessToken,
 			refreshToken
+		}
+	}
+
+	validateAccessToken(accessToken: string): JwtPayload | null {
+		try {
+			return jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET_KEY as string) as JwtPayload
+		} catch (e) {
+			return null
+		}
+	}
+
+	validateRefreshToken(refreshToken: string): JwtPayload | null {
+		try {
+			return jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY as string) as JwtPayload
+		} catch (e) {
+			return null
 		}
 	}
 
