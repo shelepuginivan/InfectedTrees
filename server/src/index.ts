@@ -4,6 +4,7 @@ import path from 'path';
 import dotenv from 'dotenv'
 import authRouter from "./routers/authRouter";
 import cookieParser from 'cookie-parser'
+import infectedTreeRouter from "./routers/infectedTreeRouter";
 
 dotenv.config({path: path.join(__dirname, '..', '.env')})
 
@@ -12,6 +13,7 @@ const app: Express = express()
 app.use(json())
 app.use(cookieParser())
 app.use('/auth', authRouter)
+app.use('/writes', infectedTreeRouter)
 
 mongoose.set({strictQuery: true})
 
