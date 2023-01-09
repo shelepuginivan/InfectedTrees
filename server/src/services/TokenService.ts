@@ -19,6 +19,14 @@ class TokenService {
 		}
 		return await Token.create({userID, refreshToken})
 	}
+
+	async findToken(refreshToken: string) {
+		return Token.findOne({refreshToken})
+	}
+
+	async removeToken(refreshToken: string): Promise<void> {
+		await Token.findOneAndDelete({refreshToken})
+	}
 }
 
 export default new TokenService()
