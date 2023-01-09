@@ -6,6 +6,7 @@ import UserDTO from "../dtos/UserDTO";
 import MailService from "./MailService";
 import TokenService from "./TokenService";
 import tokenService from "./TokenService";
+import jwt, {JwtPayload} from "jsonwebtoken";
 
 class AuthService {
 	async registration(firstname: string, lastname: string, email: string, password: string) {
@@ -14,8 +15,9 @@ class AuthService {
 			throw ServerException.BadRequest(`User with email ${email} already exists`)
 		}
 		const passwordHash = bcrypt.hashSync(password, genSaltSync(7))
-		const accountActivationLink = `${process.env.BACKEND_HOST}/auth/activate/${crypto.randomUUID()}`
-		await MailService.sendActivationMail(email, accountActivationLink)
+		const accountActivationLink = `${process.env.SERVER_HOST}/auth/activate/${crypto.randomUUID()}`
+		// TODO: fix MailService.sendActivationMail method
+		// await MailService.sendActivationMail(email, accountActivationLink)
 
 		const user = await User.create({
 			firstname,
@@ -32,6 +34,53 @@ class AuthService {
 		return {
 			...tokens,
 			user: newUserDTO
+		}
+	}
+
+	async login(email: string, password: string) {
+		const user = await User.findOne({email})
+		if (!user) {
+			throw ServerException.BadRequest(`User with email ${email} not found`)
+		} else if (!bcrypt.compareSync(password, user.password)) {
+			throw ServerException.BadRequest('Wrong password')
+		}
+		const userDTO: UserDTO = new UserDTO(user)
+		const tokens = TokenService.generateTokens({...userDTO})
+		await tokenService.saveRefreshToken(user._id as string, tokens.refreshToken)
+
+		return {
+			...tokens,
+			user: userDTO
+		}
+	}
+
+	async activateAccount(uuid: string) {
+		const activationLink = `${process.env.SERVER_HOST}/auth/activate/${uuid}`
+		const user = await User.findOne({activationLink})
+		if (!user) {
+			throw ServerException.BadRequest('Invalid activation link')
+		}
+		user.isActivated = true
+		return user.save()
+	}
+
+	async refresh(refreshToken: string) {
+		if (!refreshToken) {
+			throw ServerException.Unauthorized('Invalid refresh token')
+		}
+		const userData = await jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY as string)
+		const tokenFromDatabase = await TokenService.findToken(refreshToken)
+		if (!userData || !tokenFromDatabase) {
+			throw ServerException.Unauthorized('Invalid refresh token')
+		}
+		const user = await User.findById((userData as JwtPayload).id)
+		const userDTO: UserDTO = new UserDTO(user)
+		const tokens = TokenService.generateTokens({...userDTO})
+		await tokenService.saveRefreshToken((userData as JwtPayload).id, tokens.refreshToken)
+
+		return {
+			...tokens,
+			user: userDTO
 		}
 	}
 }
