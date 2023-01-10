@@ -1,4 +1,5 @@
 interface IInfectedTreeDTO {
+	id: string
     lat: number
     lon: number
     address: string
