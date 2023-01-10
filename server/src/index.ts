@@ -6,6 +6,7 @@ import authRouter from "./routers/authRouter";
 import cookieParser from 'cookie-parser'
 import infectedTreeRouter from "./routers/infectedTreeRouter";
 import fileUpload from 'express-fileupload';
+import userRouter from "./routers/userRouter";
 
 dotenv.config({path: path.join(__dirname, '..', '.env')})
 
@@ -16,8 +17,9 @@ app.use(cookieParser())
 app.use(fileUpload())
 app.use('/auth', authRouter)
 app.use('/records', infectedTreeRouter)
+app.use('/users', userRouter)
 
-mongoose.set({strictQuery: true})
+mongoose.set({strictQuery: false})
 
 const startServer = async (): Promise<void> => {
     try {
