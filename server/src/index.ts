@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import authRouter from "./routers/authRouter";
 import cookieParser from 'cookie-parser'
 import infectedTreeRouter from "./routers/infectedTreeRouter";
+import fileUpload from 'express-fileupload';
 
 dotenv.config({path: path.join(__dirname, '..', '.env')})
 
@@ -12,8 +13,9 @@ const app: Express = express()
 
 app.use(json())
 app.use(cookieParser())
+app.use(fileUpload())
 app.use('/auth', authRouter)
-app.use('/writes', infectedTreeRouter)
+app.use('/records', infectedTreeRouter)
 
 mongoose.set({strictQuery: true})
 
