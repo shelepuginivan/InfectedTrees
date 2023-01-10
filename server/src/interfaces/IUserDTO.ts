@@ -3,4 +3,7 @@ interface IUserDTO {
 	lastname: string
 	email: string
 	isActivated: boolean
+	organization?: string
+	phoneNumber?: number
+	birthdate?: number
 }
