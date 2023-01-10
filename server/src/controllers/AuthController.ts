@@ -73,7 +73,7 @@ class AuthController implements IAuthController {
 			const refreshToken: string = req.cookies.refreshToken
 			const userData = await AuthService.refresh(refreshToken)
 			const authData: AuthDTO = new AuthDTO(userData)
-			res.cookie('refreshToken', userData.refreshToken, {maxAge: 60 * 24 * 60 * 60 * 1000, httpOnly: true}).status(200).json(authData)
+			res.status(200).json(authData)
 		} catch (e) {
 			if (e instanceof ServerException) {
 				res.status(e.status).json({message: e.message})
