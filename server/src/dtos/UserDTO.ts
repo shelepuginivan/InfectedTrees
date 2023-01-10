@@ -4,6 +4,9 @@ class UserDTO implements IUserDTO {
 	lastname: string;
 	email: string;
 	isActivated: boolean
+	organization?: string
+	phoneNumber?: number
+	birthdate?: number
 
 	constructor(userDocument: any) {
 		this.id = userDocument._id
@@ -11,6 +14,9 @@ class UserDTO implements IUserDTO {
 		this.lastname = userDocument.lastname
 		this.email = userDocument.email
 		this.isActivated = userDocument.isActivated
+		this.organization = userDocument?.organization
+		this.phoneNumber = userDocument?.phoneNumber
+		this.birthdate = userDocument?.birthdate
 	}
 }
 
