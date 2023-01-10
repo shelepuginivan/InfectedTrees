@@ -62,11 +62,41 @@ class InfectedTreeController implements IInfectedTreeController {
 	}
 
 	async update(req: Request, res: Response): Promise<void> {
-		return Promise.resolve(undefined);
+		try {
+			const id = req.params.id
+			const {lat, lon} = req.body
+			const accessToken = req.headers.authorization?.split(' ')[1]
+			const updateData: IInfectedTreeCreationData = {
+				lat,
+				lon,
+				photo: req.files?.infectedTreePhoto as UploadedFile
+			}
+			const updatedRecord: InfectedTreeDTO = await InfectedTreeService.update(id, updateData, accessToken)
+			res.status(200).json(updatedRecord)
+		} catch (e) {
+			if (e instanceof ServerException) {
+				res.status(e.status).json({message: e.message})
+			} else {
+				res.status(500).json({message: `Unexpected server error: ${(e as Error).message}`})
+				console.error(e)
+			}
+		}
 	}
 
 	async delete(req: Request, res: Response): Promise<void> {
-		return Promise.resolve(undefined);
+		try {
+			const id = req.params.id
+			const accessToken = req.headers.authorization?.split(' ')[1]
+			await InfectedTreeService.delete(id, accessToken)
+			res.status(200).end()
+		} catch (e) {
+			if (e instanceof ServerException) {
+				res.status(e.status).json({message: e.message})
+			} else {
+				res.status(500).json({message: `Unexpected server error: ${(e as Error).message}`})
+				console.error(e)
+			}
+		}
 	}
 }
 
