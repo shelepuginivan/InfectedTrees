@@ -6,7 +6,7 @@ import UserDTO from "../dtos/UserDTO";
 import MailService from "./MailService";
 import TokenService from "./TokenService";
 import tokenService from "./TokenService";
-import jwt, {JwtPayload} from "jsonwebtoken";
+import {JwtPayload} from "jsonwebtoken";
 
 class AuthService {
 	async registration(firstname: string, lastname: string, email: string, password: string) {
@@ -46,7 +46,7 @@ class AuthService {
 		}
 		const userDTO: UserDTO = new UserDTO(user)
 		const tokens = TokenService.generateTokens({...userDTO})
-		await tokenService.saveRefreshToken(user._id as string, tokens.refreshToken)
+		await tokenService.saveRefreshToken(userDTO.id, tokens.refreshToken)
 
 		return {
 			...tokens,
@@ -68,18 +68,17 @@ class AuthService {
 		if (!refreshToken) {
 			throw ServerException.Unauthorized('Invalid refresh token')
 		}
-		const userData = await jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY as string)
+		const userData = TokenService.validateRefreshToken(refreshToken)
 		const tokenFromDatabase = await TokenService.findToken(refreshToken)
 		if (!userData || !tokenFromDatabase) {
 			throw ServerException.Unauthorized('Invalid refresh token')
 		}
 		const user = await User.findById((userData as JwtPayload).id)
 		const userDTO: UserDTO = new UserDTO(user)
-		const tokens = TokenService.generateTokens({...userDTO})
-		await tokenService.saveRefreshToken((userData as JwtPayload).id, tokens.refreshToken)
+		const accessToken = TokenService.generateAccessToken(userDTO)
 
 		return {
-			...tokens,
+			accessToken,
 			user: userDTO
 		}
 	}
