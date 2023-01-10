@@ -7,6 +7,8 @@ const User: Schema = new Schema({
 	password: {type: String, required: true},
 	isActivated: {type: Boolean, default: false},
 	activationLink: {type: String, required: true}
+}, {
+	strict: false
 })
 
 export default model('User', User)
