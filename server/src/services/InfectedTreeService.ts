@@ -8,7 +8,7 @@ import FileService from "./FileService"
 class InfectedTreeService {
 	async getAllUsersWrites(accessToken?: string): Promise<InfectedTreeDTO[]> {
 		if (!accessToken) {
-			throw ServerException.Unauthorized('no access token provided')
+			throw ServerException.Unauthorized('access token not provided')
 		}
 		const userData = TokenService.validateAccessToken(accessToken)
 		if (!userData) {
@@ -20,7 +20,7 @@ class InfectedTreeService {
 
 	async getOneWriting(id: string): Promise<InfectedTreeDTO> {
 		if (!id) {
-			throw ServerException.BadRequest('parameter id required')
+			throw ServerException.BadRequest('parameter id is required')
 		}
 		const writing = await InfectedTree.findById(id)
 		return new InfectedTreeDTO(writing)
@@ -28,7 +28,7 @@ class InfectedTreeService {
 
 	async create(creationData: IInfectedTreeCreationData, accessToken?: string): Promise<InfectedTreeDTO> {
 		if (!accessToken) {
-			throw ServerException.Unauthorized('no access token provided')
+			throw ServerException.Unauthorized('access token not provided')
 		}
 		const userData = TokenService.validateAccessToken(accessToken)
 		if (!userData) {
@@ -43,6 +43,44 @@ class InfectedTreeService {
 		}
 		const newRecord = await InfectedTree.create(infectedTreeData)
 		return new InfectedTreeDTO(newRecord)
+	}
+
+	async update(id: string, updateData: IInfectedTreeCreationData, accessToken?: string): Promise<InfectedTreeDTO> {
+		if (!accessToken) {
+			throw ServerException.Unauthorized('access token not provided')
+		}
+		const userData = TokenService.validateAccessToken(accessToken)
+		if (!userData) {
+			throw ServerException.Expired()
+		}
+		const recordToUpdate = await InfectedTree.findById(id)
+		if (!recordToUpdate) {
+			throw ServerException.BadRequest('record with given id not found')
+		}
+		const filename = recordToUpdate.photoURL
+		await FileService.rewriteFile(filename, updateData.photo)
+		recordToUpdate.lat = updateData.lat
+		recordToUpdate.lon = updateData.lon
+		const updatedRecord = await recordToUpdate.save()
+		return new InfectedTreeDTO(updatedRecord)
+	}
+
+	async delete(id: string, accessToken?: string) {
+		if (!accessToken) {
+			throw ServerException.Unauthorized('access token not provided')
+		}
+		const userData = TokenService.validateAccessToken(accessToken)
+		if (!userData) {
+			throw ServerException.Expired()
+		}
+		const deletedRecord = await InfectedTree.findOneAndDelete({
+			_id: id,
+			user: userData.id
+		})
+		if (!deletedRecord) {
+			throw ServerException.BadRequest('record with given id not found')
+		}
+		await FileService.deleteFile(deletedRecord.photoURL)
 	}
 }
 
