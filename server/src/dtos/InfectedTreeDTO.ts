@@ -1,10 +1,12 @@
 class InfectedTreeDTO implements IInfectedTreeDTO {
-    address: string;
-    lat: number;
-    lon: number;
-    photoURL: string;
+	id: string
+    address: string
+    lat: number
+    lon: number
+    photoURL: string
 
-    constructor(data: IInfectedTreeDTO) {
+    constructor(data: any) {
+		this.id = data._id
         this.lat = data.lat
         this.lon = data.lon
         this.address = data.address
