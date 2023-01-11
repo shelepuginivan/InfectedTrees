@@ -1,0 +1,17 @@
+.submitButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition);
+	background-color: var(--green);
+	color: #fff;
+	padding-inline: 30px;
+	height: 30px;
+	border: none;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.submitButton:hover {
+	background-color: var(--dark-green);
+}
