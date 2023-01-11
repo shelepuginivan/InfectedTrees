@@ -7,11 +7,16 @@ import cookieParser from 'cookie-parser'
 import infectedTreeRouter from "./routers/infectedTreeRouter";
 import fileUpload from 'express-fileupload';
 import userRouter from "./routers/userRouter";
+import cors from 'cors';
 
 dotenv.config({path: path.join(__dirname, '..', '.env')})
 
 const app: Express = express()
 
+app.use(cors({
+	origin: process.env.CLIENT_HOST,
+	credentials: true
+}))
 app.use(json())
 app.use(cookieParser())
 app.use(fileUpload())
