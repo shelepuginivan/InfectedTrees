@@ -1,0 +1,29 @@
+.header {
+	display: flex;
+	height: 100px;
+	padding-inline: 30px;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+.headerLinks {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 30%;
+	width: 30%;
+}
+
+.headerLink {
+	color: darkgreen;
+	text-decoration: none;
+	font-size: 24px;
+}
+
+.headerLink:hover {
+	text-decoration: underline;
+}
