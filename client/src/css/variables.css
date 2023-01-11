@@ -1,0 +1,14 @@
+:root {
+	--light-gray: #ccc;
+	--lighter-gray: #eee;
+	--light-gray-border: 1px solid var(--light-gray);
+	--lighter-gray-border: 1px solid var(--lighter-gray);
+	--small-border-radius: 5px;
+	--green: #176917;
+	--dark-green: #115011;
+	--short-duration: .2s;
+	--transition: all ease-in-out var(--short-duration);
+	--shadow: 0px 0px 21px -2px rgba(0, 0, 0, 0.2);
+	--link-blue: #58a6ff;
+	--dark-red: #a10404
+}
