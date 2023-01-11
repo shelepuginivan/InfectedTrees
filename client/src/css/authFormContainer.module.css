@@ -1,0 +1,18 @@
+.authFormContainer {
+	height: 100vh;
+	width: 50%;
+	padding-inline: 5%;
+	padding-bottom: 15vh;
+	padding-top: 15vh;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+}
+
+.authFormContainerHeader {
+	height: 15vh;
+	font-size: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
