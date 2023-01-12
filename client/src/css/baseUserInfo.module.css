@@ -1,0 +1,13 @@
+.baseUserInfo {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: var(--medium-border-radius);
+	box-shadow: var(--shadow);
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+	height: fit-content;
+	min-height: 200px;
+	max-height: 30vh;
+}
