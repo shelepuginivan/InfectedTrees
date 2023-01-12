@@ -1,0 +1,16 @@
+.loginLink {
+	color: #000;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 15px 5px 15px;
+	outline: 1px solid var(--green);
+	background-color: var(--lighter-gray);
+	margin-inline: 15px;
+}
+
+.loginLink:hover {
+	transition: var(--transition);
+	background-color: var(--light-gray);
+}
