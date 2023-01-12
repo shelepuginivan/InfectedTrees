@@ -1,9 +1,9 @@
-import PhotoUploadForm from "../components/PhotoUploadForm";
+import InfectedTreeUploadForm from "../components/InfectedTreeUploadForm";
 
 const UploadPage = () => {
 	return (
 		<div class="page">
-			<PhotoUploadForm/>
+			<InfectedTreeUploadForm/>
 		</div>
 	)
 }
