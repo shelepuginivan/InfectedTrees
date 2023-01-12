@@ -1,0 +1,15 @@
+.registrationLink {
+	color: #fff;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 15px 5px 15px;
+	background-color: var(--green);
+	margin-inline: 15px;
+}
+
+.registrationLink:hover {
+	transition: var(--transition);
+	background-color: var(--dark-green);
+}
