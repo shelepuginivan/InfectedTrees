@@ -45,7 +45,7 @@ const RegistrationForm = (): JSX.Element => {
 			<TextInput placeholder="E-mail" value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
 			<PasswordInput placeholder="Пароль" value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
 			<SubmitButton onclick={registration}>Зарегистрироваться</SubmitButton>
-			<p>Уже зарегистрированы? <A class="link" href={LOGIN_ROUTE}>Войдите</A></p>
+			<p>Уже есть аккаунт? <A href={LOGIN_ROUTE}>Войти</A></p>
 		</form>
 	);
 };
