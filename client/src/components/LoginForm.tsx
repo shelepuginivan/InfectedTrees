@@ -4,8 +4,9 @@ import TextInput from "./ui/TextInput/TextInput";
 import PasswordInput from "./ui/PasswordInput/PasswordInput";
 import SubmitButton from "./ui/SubmitButton/SubmitButton";
 import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";
-import {SERVER_HOST} from "../utils/consts";
+import {REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
 import Logo from "./ui/Logo";
+import {A} from "@solidjs/router";
 
 const LoginForm = (): JSX.Element => {
 	const [getEmail, setEmail] = createSignal<string>('')
@@ -34,6 +35,7 @@ const LoginForm = (): JSX.Element => {
 			<TextInput placeholder="E-mail" value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
 			<PasswordInput placeholder="Пароль" value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
 			<SubmitButton onclick={login}>Войти</SubmitButton>
+			<p>Ещё нет аккаунта? <A href={REGISTRATION_ROUTE}>Зарегистрируйтесь</A></p>
 		</form>
 	);
 };
