@@ -23,6 +23,7 @@ const LoginForm = (): JSX.Element => {
 			const userData = loginResponse.data
 			sessionStorage.setItem('accessToken', userData.accessToken)
 			sessionStorage.setItem('fullName', `${userData.user.firstname} ${userData.user.lastname}`)
+			sessionStorage.setItem('email', userData.user.email)
 		} catch (e) {
 			console.log(e);
 		}
