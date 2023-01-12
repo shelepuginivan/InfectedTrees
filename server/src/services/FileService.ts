@@ -2,7 +2,7 @@ import fileUpload from 'express-fileupload'
 import {IFileService} from '../interfaces/IFileService'
 import crypto from 'crypto'
 import path from 'path'
-import fs from "fs";
+import {rm} from 'fs/promises'
 
 class FileService implements IFileService {
 	async writeFile(file: fileUpload.UploadedFile): Promise<string> {
@@ -22,7 +22,7 @@ class FileService implements IFileService {
 
 	async deleteFile(filename: string): Promise<void> {
 		const filepath = path.join(__dirname, '..', '..', 'files', filename)
-		await fs.rmSync(filepath)
+		await rm(filepath)
 	}
 }
 
