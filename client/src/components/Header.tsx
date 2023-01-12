@@ -4,6 +4,7 @@ import styles from '../css/header.module.css'
 import Logo from "./ui/Logo";
 import LoginLink from "./ui/LoginLink/LoginLink";
 import RegistrationLink from "./ui/RegistrationLink/RegistrationLink";
+import {PROFILE_ROUTE, UPLOAD_ROUTE} from "../utils/consts";
 
 const Header = (): JSX.Element => {
 	const authorized = Boolean(sessionStorage.getItem('accessToken'))
@@ -14,8 +15,8 @@ const Header = (): JSX.Element => {
 				<Logo/>
 				<div class={styles.headerLinks}>
 					<A class={styles.headerLink} href={'/'}>Мои записи</A>
-					<A class={styles.headerLink} href={'/'}>Загрузить фото</A>
-					<A class={styles.headerLink} href={'/'}>Профиль</A>
+					<A class={styles.headerLink} href={UPLOAD_ROUTE}>Загрузить фото</A>
+					<A class={styles.headerLink} href={PROFILE_ROUTE}>Профиль</A>
 				</div>
 			</header>
 		)
