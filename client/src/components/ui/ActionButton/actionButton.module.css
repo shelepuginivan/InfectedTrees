@@ -10,6 +10,8 @@
 	border: none;
 	margin-top: 5px;
 	margin-bottom: 10px;
+	min-width: 136px;
+	width: fit-content;
 }
 
 .actionButton:hover, .actionButton:disabled {
