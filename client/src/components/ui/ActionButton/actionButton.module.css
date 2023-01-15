@@ -12,8 +12,14 @@
 	margin-bottom: 10px;
 	min-width: 136px;
 	width: fit-content;
+	cursor: pointer;
 }
 
-.actionButton:hover, .actionButton:disabled {
+.actionButton:hover {
+	background-color: var(--dark-blue);
+}
+
+.actionButton:disabled {
+	cursor: auto;
 	background-color: var(--dark-blue);
 }
