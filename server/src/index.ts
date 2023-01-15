@@ -8,6 +8,7 @@ import infectedTreeRouter from "./routers/infectedTreeRouter";
 import fileUpload from 'express-fileupload';
 import userRouter from "./routers/userRouter";
 import cors from 'cors';
+import APIRouter from "./routers/APIRouter";
 
 dotenv.config({path: path.join(__dirname, '..', '.env')})
 
@@ -23,6 +24,7 @@ app.use(fileUpload())
 app.use('/auth', authRouter)
 app.use('/records', infectedTreeRouter)
 app.use('/users', userRouter)
+app.use('/api', APIRouter)
 
 mongoose.set({strictQuery: false})
 
