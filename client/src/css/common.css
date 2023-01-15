@@ -9,3 +9,10 @@
 .two-cols > * {
 	max-width: 50%;
 }
+
+.main-page-header {
+	width: 60%;
+	margin-bottom: 15px;
+	margin-inline: auto;
+	font-size: 3rem;
+}
