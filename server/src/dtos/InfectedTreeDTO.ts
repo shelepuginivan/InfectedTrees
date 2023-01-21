@@ -4,6 +4,7 @@ class InfectedTreeDTO implements IInfectedTreeDTO {
     lat: number
     lon: number
     photoURL: string
+	uploadTime: number
 
     constructor(data: any) {
 		this.id = data._id
@@ -11,6 +12,7 @@ class InfectedTreeDTO implements IInfectedTreeDTO {
         this.lon = data.lon
         this.address = data.address
         this.photoURL = data.photoURL
+		this.uploadTime = data.uploadTime
     }
 }
 
