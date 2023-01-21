@@ -3,12 +3,12 @@ import Token from "../models/Token";
 
 class TokenService {
 	generateAccessToken(payload: IUserDTO) {
-		return jwt.sign(payload, process.env.JWT_ACCESS_SECRET_KEY as string, {expiresIn: '1h'})
+		return jwt.sign({...payload}, process.env.JWT_ACCESS_SECRET_KEY as string, {expiresIn: '1h'})
 	}
 
 	generateTokens(payload: IUserDTO) {
-		const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET_KEY as string, {expiresIn: '1h'})
-		const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET_KEY as string, {expiresIn: '60d'})
+		const accessToken = jwt.sign({...payload}, process.env.JWT_ACCESS_SECRET_KEY as string, {expiresIn: '1h'})
+		const refreshToken = jwt.sign({...payload}, process.env.JWT_REFRESH_SECRET_KEY as string, {expiresIn: '60d'})
 		return {
 			accessToken,
 			refreshToken
