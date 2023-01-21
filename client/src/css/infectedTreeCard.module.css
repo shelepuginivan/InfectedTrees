@@ -1,0 +1,25 @@
+.card {
+	display: flex;
+	padding: 20px;
+	box-shadow: var(--shadow);
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.image {
+	height: 100%;
+	width: auto;
+	max-width: 30%;
+	margin-right: 5%;
+}
+
+.data {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	max-width: 60%;
+	margin-right: 5%;
+}
