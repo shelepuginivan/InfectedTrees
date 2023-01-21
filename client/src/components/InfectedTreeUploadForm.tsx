@@ -84,7 +84,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 
 	return (
 		<form class={styles.form}>
-			<h1>Новая запись</h1>
+			<h2>Координаты</h2>
 			<div>
 				<TextInput placeholder="Широта" value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
 				<TextInput placeholder="Долгота" value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
