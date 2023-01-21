@@ -4,9 +4,10 @@ import TextInput from "./ui/TextInput/TextInput";
 import PasswordInput from "./ui/PasswordInput/PasswordInput";
 import SubmitButton from "./ui/SubmitButton/SubmitButton";
 import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";
-import {REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
+import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
 import Logo from "./ui/Logo";
 import {A} from "@solidjs/router";
+import {navigateTo} from "../utils/navigateTo";
 
 const LoginForm = (): JSX.Element => {
 	const [getEmail, setEmail] = createSignal<string>('')
@@ -24,6 +25,7 @@ const LoginForm = (): JSX.Element => {
 			sessionStorage.setItem('accessToken', userData.accessToken)
 			sessionStorage.setItem('fullName', `${userData.user.firstname} ${userData.user.lastname}`)
 			sessionStorage.setItem('email', userData.user.email)
+			navigateTo(HOME_ROUTE)
 		} catch (e) {
 			console.log(e);
 		}
