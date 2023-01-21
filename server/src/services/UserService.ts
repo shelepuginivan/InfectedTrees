@@ -25,6 +25,19 @@ class UserService implements IUserService {
 		}
 		return new UserDTO(updatedUserData)
 	}
+
+	async getUserData(accessToken?: string): Promise<UserDTO> {
+		if (!accessToken) {
+			throw ServerException.Unauthorized('access token not provided')
+		}
+		const userPayload = TokenService.validateAccessToken(accessToken)
+		if (!userPayload) {
+			throw ServerException.Expired()
+		}
+		const id = userPayload.id
+		const userData = await User.findById(id)
+		return new UserDTO(userData)
+	}
 }
 
 export default new UserService()
