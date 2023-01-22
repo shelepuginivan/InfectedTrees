@@ -6,4 +6,5 @@ interface IUserDTO {
 	organization?: string
 	phoneNumber?: number
 	birthdate?: number
+	hasAPIKey: boolean
 }
