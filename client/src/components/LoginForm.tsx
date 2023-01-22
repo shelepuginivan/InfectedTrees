@@ -25,6 +25,7 @@ const LoginForm = (): JSX.Element => {
 			sessionStorage.setItem('accessToken', userData.accessToken)
 			sessionStorage.setItem('fullName', `${userData.user.firstname} ${userData.user.lastname}`)
 			sessionStorage.setItem('email', userData.user.email)
+			sessionStorage.setItem('hasAPIKey', userData.user.hasAPIKey.toString())
 			navigateTo(HOME_ROUTE)
 		} catch (e) {
 			console.log(e);
