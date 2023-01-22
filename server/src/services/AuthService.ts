@@ -64,9 +64,9 @@ class AuthService {
 		return user.save()
 	}
 
-	async refresh(refreshToken: string) {
+	async refresh(refreshToken?: string) {
 		if (!refreshToken) {
-			throw ServerException.Unauthorized('Invalid refresh token')
+			throw ServerException.Unauthorized('refresh token not provided')
 		}
 		const userData = TokenService.validateRefreshToken(refreshToken)
 		const tokenFromDatabase = await TokenService.findToken(refreshToken)
