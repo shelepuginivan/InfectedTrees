@@ -1,6 +1,7 @@
 import {JSX} from 'solid-js'
 import BaseUserInfo from "../components/BaseUserInfo";
 import AdditionalInfo from "../components/AdditionalInfo";
+import APIInfo from "../components/APIInfo";
 
 const ProfilePage = (): JSX.Element => {
 	return (
@@ -10,8 +11,7 @@ const ProfilePage = (): JSX.Element => {
 					<BaseUserInfo/>
 					<AdditionalInfo/>
 				</div>
-
-				{/* API menu */}
+				<APIInfo/>
 			</div>
 		</div>
 	)
