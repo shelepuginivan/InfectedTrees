@@ -2,18 +2,20 @@ import {JSX} from 'solid-js'
 import BaseUserInfo from "../components/BaseUserInfo";
 import AdditionalInfo from "../components/AdditionalInfo";
 import APIInfo from "../components/APIInfo";
+import Page from "../components/ui/Page/Page";
+import TwoColumns from "../components/ui/TwoColumns/TwoColumns";
 
 const ProfilePage = (): JSX.Element => {
 	return (
-		<div class="page">
-			<div class="two-cols">
+		<Page>
+			<TwoColumns>
 				<div>
 					<BaseUserInfo/>
 					<AdditionalInfo/>
 				</div>
 				<APIInfo/>
-			</div>
-		</div>
+			</TwoColumns>
+		</Page>
 	)
 }
 

@@ -1,13 +1,15 @@
-import {JSX} from "solid-js";
-import InfectedTreeCardsContainer from "../components/InfectedTreeCardsContainer";
+import {JSX} from 'solid-js'
+import InfectedTreeCardsContainer from '../components/InfectedTreeCardsContainer'
+import Page from '../components/ui/Page/Page'
+import MainHeader from '../components/ui/MainHeader/MainHeader'
 
 const UserUploadsPage = (): JSX.Element => {
 	return (
-		<div class="page">
-			<h1 class="main-page-header">Мои записи</h1>
+		<Page>
+			<MainHeader>Мои записи</MainHeader>
 			<InfectedTreeCardsContainer/>
-		</div>
-	);
-};
+		</Page>
+	)
+}
 
-export default UserUploadsPage;
+export default UserUploadsPage

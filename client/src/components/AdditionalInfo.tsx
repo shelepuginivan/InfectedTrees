@@ -9,6 +9,8 @@ import {axiosInstanceAuthorized} from "../utils/axiosInstanceAuthorized";
 import {SERVER_HOST} from "../utils/consts";
 import {formatDateInput} from "../utils/formatDateInput";
 import {interceptor} from "../utils/interceptor";
+import {formatDateRequest} from "../utils/formatDateRequest";
+import Container from "./ui/Container/Container";
 
 const AdditionalInfo = (): JSX.Element => {
 	const [getIsEditingMode, setIsEditingMode] = createSignal<boolean>(false)
@@ -28,7 +30,7 @@ const AdditionalInfo = (): JSX.Element => {
 
 	const uploadAdditionalInfo = async (): Promise<void> => {
 		const additionalData = {
-			birthdate: getBirthdate(),
+			birthdate: formatDateRequest(getBirthdate()),
 			organization: getOrganizationName(),
 			phoneNumber: getPhoneNumber()
 		}
@@ -44,24 +46,25 @@ const AdditionalInfo = (): JSX.Element => {
 		setIsEditingMode(false)
 	}
 
-
 	return (
-		<Show when={getIsEditingMode()} fallback={<div class={styles.additionalInfo}>
-			<h2>Дополнительная информация</h2>
-			<p class={styles.p}>Дата рождения: {getBirthdate() ?? 'не установлена'}</p>
-			<p class={styles.p}>Название организации: {getOrganizationName() ?? 'не установлено'}</p>
-			<p class={styles.p}>Телефон: {getPhoneNumber() ?? 'не установлен'}</p>
-			<ActionButton onclick={() => setIsEditingMode(true)}>Изменить</ActionButton>
-		</div>} keyed>
-			<div class={styles.additionalInfo}>
+		<Show when={getIsEditingMode()} keyed={true} fallback={
+			<Container>
+				<h2>Дополнительная информация</h2>
+				<p class={styles.p}>Дата рождения: {getBirthdate() ?? 'не установлена'}</p>
+				<p class={styles.p}>Название организации: {getOrganizationName() ?? 'не установлено'}</p>
+				<p class={styles.p}>Телефон: {getPhoneNumber() ?? 'не установлен'}</p>
+				<ActionButton onclick={() => setIsEditingMode(true)}>Изменить</ActionButton>
+			</Container>
+		}>
+			<Container>
 				<h2>Дополнительная информация</h2>
 				<DateInput placeholder="День рождения" value={formatDateInput(getBirthdate())} onchange={e => setBirthdate((e.target as HTMLInputElement).value)}/>
 				<TextInput placeholder="Название организации" value={getOrganizationName()} onchange={e => setOrganizationName((e.target as HTMLInputElement).value)}/>
 				<PhoneInput placeholder="Телефон" value={getPhoneNumber()} onchange={e => setPhoneNumber((e.target as HTMLInputElement).value)}/>
 				<SubmitButton onclick={submit}>Сохранить изменения</SubmitButton>
-			</div>
-	</Show>
+			</Container>
+		</Show>
 	)
 }
 
-export default AdditionalInfo;
+export default AdditionalInfo

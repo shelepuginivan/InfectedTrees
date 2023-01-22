@@ -1,12 +1,14 @@
-import InfectedTreeUploadForm from "../components/InfectedTreeUploadForm";
+import InfectedTreeUploadForm from '../components/InfectedTreeUploadForm'
+import MainHeader from '../components/ui/MainHeader/MainHeader'
+import Page from '../components/ui/Page/Page'
 
 const UploadPage = () => {
 	return (
-		<div class="page">
-			<h1 class="main-page-header">Новая запись</h1>
+		<Page>
+			<MainHeader>Новая запись</MainHeader>
 			<InfectedTreeUploadForm/>
-		</div>
+		</Page>
 	)
 }
 
-export default UploadPage;
+export default UploadPage
