@@ -7,6 +7,7 @@ class UserDTO implements IUserDTO {
 	organization?: string
 	phoneNumber?: number
 	birthdate?: number
+	hasAPIKey: boolean
 
 	constructor(userDocument: any) {
 		this.id = userDocument._id
@@ -17,6 +18,7 @@ class UserDTO implements IUserDTO {
 		this.organization = userDocument?.organization
 		this.phoneNumber = userDocument?.phoneNumber
 		this.birthdate = userDocument?.birthdate
+		this.hasAPIKey = userDocument.hasAPIKey
 	}
 }
 
