@@ -32,6 +32,7 @@ const RegistrationForm = (): JSX.Element => {
 			sessionStorage.setItem('accessToken', userData.accessToken)
 			sessionStorage.setItem('fullName', `${userData.user.firstname} ${userData.user.lastname}`)
 			sessionStorage.setItem('email', userData.user.email)
+			sessionStorage.setItem('hasAPIKey', 'false')
 			navigateTo(HOME_ROUTE)
 		} catch (e) {
 			if (e instanceof AxiosError) {
