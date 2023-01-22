@@ -6,7 +6,8 @@ const User: Schema = new Schema({
 	email: {type: String, required: true},
 	password: {type: String, required: true},
 	isActivated: {type: Boolean, default: false},
-	activationLink: {type: String, required: true}
+	activationLink: {type: String, required: true},
+	hasAPIKey: {type: Boolean, default: false}
 }, {
 	strict: false
 })
