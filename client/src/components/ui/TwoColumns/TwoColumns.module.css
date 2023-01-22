@@ -1,0 +1,8 @@
+.two-cols {
+	display: flex;
+}
+
+.two-cols > * {
+	width: calc(50% - 40px) !important;
+	margin-inline: 20px;
+}
