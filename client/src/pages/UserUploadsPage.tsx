@@ -1,7 +1,7 @@
 import {JSX} from 'solid-js'
-import InfectedTreeCardsContainer from '../components/InfectedTreeCardsContainer'
-import Page from '../components/ui/Page/Page'
-import MainHeader from '../components/ui/MainHeader/MainHeader'
+import InfectedTreeCardsContainer from '../components/InfectedTreeCardsContainer/InfectedTreeCardsContainer'
+import Page from '../ui/Page/Page'
+import MainHeader from '../ui/MainHeader/MainHeader'
 
 const UserUploadsPage = (): JSX.Element => {
 	return (

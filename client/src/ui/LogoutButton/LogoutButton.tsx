@@ -1,6 +1,6 @@
 import {JSX, ParentProps} from 'solid-js'
-import {axiosInstanceAuthorized} from "../../../utils/axiosInstanceAuthorized";
-import {LOGIN_ROUTE, SERVER_HOST} from "../../../utils/consts";
+import {axiosInstanceAuthorized} from "../../utils/axiosInstanceAuthorized";
+import {LOGIN_ROUTE, SERVER_HOST} from "../../utils/consts";
 import styles from './logoutButton.module.css'
 
 const LogoutButton = (props: ParentProps): JSX.Element => {

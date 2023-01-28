@@ -1,6 +1,6 @@
 import {JSX} from 'solid-js'
 import {A} from "@solidjs/router";
-import {LOGIN_ROUTE} from "../../../utils/consts";
+import {LOGIN_ROUTE} from "../../utils/consts";
 import styles from './loginLink.module.css'
 
 const LoginLink = (): JSX.Element => {

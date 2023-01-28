@@ -1,5 +1,5 @@
 import {JSX} from 'solid-js'
-import {FileUploadAreaProps} from "../../../utils/types/FileUploadAreaProps";
+import {FileUploadAreaProps} from "../../utils/types/FileUploadAreaProps";
 import styles from './fileUploadArea.module.css'
 
 const FileUploadArea = (props: FileUploadAreaProps): JSX.Element => {

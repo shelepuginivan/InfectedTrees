@@ -1,16 +1,16 @@
 import {createSignal, JSX, onMount, Show} from "solid-js";
-import DateInput from "./ui/DateInput/DateInput";
-import TextInput from "./ui/TextInput/TextInput";
-import PhoneInput from "./ui/PhoneInput/PhoneInput";
-import SubmitButton from "./ui/SubmitButton/SubmitButton";
-import ActionButton from "./ui/ActionButton/ActionButton";
-import styles from '../css/additionalInfo.module.css'
-import {axiosInstanceAuthorized} from "../utils/axiosInstanceAuthorized";
-import {SERVER_HOST} from "../utils/consts";
-import {formatDateInput} from "../utils/formatDateInput";
-import {interceptor} from "../utils/interceptor";
-import {formatDateRequest} from "../utils/formatDateRequest";
-import Container from "./ui/Container/Container";
+import DateInput from "../../ui/DateInput/DateInput";
+import TextInput from "../../ui/TextInput/TextInput";
+import PhoneInput from "../../ui/PhoneInput/PhoneInput";
+import SubmitButton from "../../ui/SubmitButton/SubmitButton";
+import ActionButton from "../../ui/ActionButton/ActionButton";
+import styles from './additionalInfo.module.css'
+import {axiosInstanceAuthorized} from "../../utils/axiosInstanceAuthorized";
+import {SERVER_HOST} from "../../utils/consts";
+import {formatDateInput} from "../../utils/formatDateInput";
+import {interceptor} from "../../utils/interceptor";
+import {formatDateRequest} from "../../utils/formatDateRequest";
+import Container from "../../ui/Container/Container";
 
 const AdditionalInfo = (): JSX.Element => {
 	const [getIsEditingMode, setIsEditingMode] = createSignal<boolean>(false)

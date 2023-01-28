@@ -1,6 +1,6 @@
 import {JSX} from 'solid-js'
-import LogoutButton from './ui/LogoutButton/LogoutButton'
-import Container from './ui/Container/Container'
+import LogoutButton from '../../ui/LogoutButton/LogoutButton'
+import Container from '../../ui/Container/Container'
 
 const BaseUserInfo = (): JSX.Element => {
 	const fullName = sessionStorage.getItem('fullName')

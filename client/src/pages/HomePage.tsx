@@ -1,6 +1,6 @@
 import {JSX} from "solid-js";
-import Header from "../components/Header";
-import Page from "../components/ui/Page/Page";
+import Header from "../components/Header/Header";
+import Page from "../ui/Page/Page";
 
 const HomePage = (): JSX.Element => {
 	return (

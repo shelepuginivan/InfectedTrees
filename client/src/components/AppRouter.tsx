@@ -1,7 +1,7 @@
 import {createSignal, JSX, onMount, Show} from "solid-js";
 import {Route, Router, Routes} from "@solidjs/router";
 import {authorizedRoutes, unauthorizedRoutes} from "../utils/routes";
-import Header from "./Header";
+import Header from "./Header/Header";
 import Redirect from "./Redirect";
 import {HOME_ROUTE, SERVER_HOST} from "../utils/consts";
 import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";

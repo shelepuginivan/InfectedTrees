@@ -1,11 +1,11 @@
 import {createSignal, JSX} from 'solid-js'
 import styles from '../css/form.module.css'
-import TextInput from "./ui/TextInput/TextInput";
-import PasswordInput from "./ui/PasswordInput/PasswordInput";
-import SubmitButton from "./ui/SubmitButton/SubmitButton";
+import TextInput from "../ui/TextInput/TextInput";
+import PasswordInput from "../ui/PasswordInput/PasswordInput";
+import SubmitButton from "../ui/SubmitButton/SubmitButton";
 import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";
 import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
-import Logo from "./ui/Logo";
+import Logo from "../ui/Logo";
 import {A} from "@solidjs/router";
 import {navigateTo} from "../utils/navigateTo";
 

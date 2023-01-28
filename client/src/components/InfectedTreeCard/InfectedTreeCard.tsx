@@ -1,6 +1,6 @@
 import {JSX} from "solid-js"
-import {InfectedTreeCardProps} from "../utils/types/InfectedTreeCardProps";
-import styles from '../css/infectedTreeCard.module.css'
+import {InfectedTreeCardProps} from "../../utils/types/InfectedTreeCardProps";
+import styles from './infectedTreeCard.module.css'
 
 const InfectedTreeCard = (props: InfectedTreeCardProps): JSX.Element => {
 	return (

@@ -1,12 +1,12 @@
 import {createSignal, JSX} from "solid-js";
-import FileUploadArea from "./ui/FileUploadArea/FileUploadArea";
-import styles from '../css/infectedTreeUploadForm.module.css'
-import {getCurrentPosition} from "../utils/getCurrentPosition";
-import TextInput from "./ui/TextInput/TextInput";
-import ActionButton from "./ui/ActionButton/ActionButton";
-import SubmitButton from "./ui/SubmitButton/SubmitButton";
-import {axiosInstanceAuthorized} from "../utils/axiosInstanceAuthorized";
-import {SERVER_HOST} from "../utils/consts";
+import FileUploadArea from "../../ui/FileUploadArea/FileUploadArea";
+import styles from './infectedTreeUploadForm.module.css'
+import {getCurrentPosition} from "../../utils/getCurrentPosition";
+import TextInput from "../../ui/TextInput/TextInput";
+import ActionButton from "../../ui/ActionButton/ActionButton";
+import SubmitButton from "../../ui/SubmitButton/SubmitButton";
+import {axiosInstanceAuthorized} from "../../utils/axiosInstanceAuthorized";
+import {SERVER_HOST} from "../../utils/consts";
 
 const InfectedTreeUploadForm = (): JSX.Element => {
 	const [getAnyFileUploaded, setAnyFileUploaded] = createSignal<boolean>(false)

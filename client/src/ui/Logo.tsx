@@ -1,5 +1,5 @@
 import {JSX} from "solid-js";
-import {HOME_ROUTE} from "../../utils/consts";
+import {HOME_ROUTE} from "../utils/consts";
 import {A} from "@solidjs/router";
 
 const Logo = (): JSX.Element => {
