@@ -8,17 +8,33 @@ import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
 import Logo from "../ui/Logo";
 import {A} from "@solidjs/router";
 import {navigateTo} from "../utils/navigateTo";
+import {validateEmail} from "../utils/validateEmail";
+import FormErrorMessage from "../ui/FormErrorMessage/FormErrorMessage";
+import {AxiosError} from "axios";
 
 const LoginForm = (): JSX.Element => {
 	const [getEmail, setEmail] = createSignal<string>('')
 	const [getPassword, setPassword] = createSignal<string>('')
-
+	const [getLoginFailed, setLoginFailed] = createSignal<boolean>(false)
+	const [getErrorMessage, setErrorMessage] = createSignal<string>('')
 	const login = async () => {
-		// TODO: form validation
+		if (!(getEmail() && getPassword())) {
+			setLoginFailed(true)
+			setErrorMessage("Заполните все поля")
+			return
+		}
+
+		if (!validateEmail(getEmail())) {
+			setLoginFailed(true)
+			setErrorMessage("Некорректный Email")
+			return
+		}
+
 		const loginData = {
 			email: getEmail(),
 			password: getPassword()
 		}
+
 		try {
 			const loginResponse = await axiosInstanceUnauthorized.post(`${SERVER_HOST}/auth/login`, loginData)
 			const userData = loginResponse.data
@@ -28,7 +44,10 @@ const LoginForm = (): JSX.Element => {
 			sessionStorage.setItem('hasAPIKey', userData.user.hasAPIKey.toString())
 			navigateTo(HOME_ROUTE)
 		} catch (e) {
-			console.log(e);
+			if (e instanceof AxiosError) {
+				setLoginFailed(true)
+				setErrorMessage("Неверный Email или пароль")
+			}
 		}
 
 	}
@@ -39,6 +58,7 @@ const LoginForm = (): JSX.Element => {
 			<TextInput placeholder="E-mail" value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
 			<PasswordInput placeholder="Пароль" value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
 			<SubmitButton onclick={login}>Войти</SubmitButton>
+			<FormErrorMessage visible={getLoginFailed()}>{getErrorMessage}</FormErrorMessage>
 			<p>Ещё нет аккаунта? <A href={REGISTRATION_ROUTE}>Зарегистрируйтесь</A></p>
 		</form>
 	);
