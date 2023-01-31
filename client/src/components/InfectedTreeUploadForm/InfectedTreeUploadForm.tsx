@@ -6,26 +6,40 @@ import TextInput from "../../ui/TextInput/TextInput";
 import ActionButton from "../../ui/ActionButton/ActionButton";
 import SubmitButton from "../../ui/SubmitButton/SubmitButton";
 import {axiosInstanceAuthorized} from "../../utils/axiosInstanceAuthorized";
-import {SERVER_HOST} from "../../utils/consts";
+import {SERVER_HOST, USER_UPLOADS_ROUTE} from "../../utils/consts";
+import {navigateTo} from "../../utils/navigateTo";
+import FormErrorMessage from "../../ui/FormErrorMessage/FormErrorMessage";
 
 const InfectedTreeUploadForm = (): JSX.Element => {
 	const [getAnyFileUploaded, setAnyFileUploaded] = createSignal<boolean>(false)
 	const [getFile, setFile] = createSignal<File | undefined>(undefined)
 	const [getFileURL, setFileUrl] = createSignal<string | undefined>(undefined)
-
 	const [getLatitude, setLatitude] = createSignal<string>('')
 	const [getLongitude, setLongitude] = createSignal<string>('')
 	const [getLoading, setLoading] = createSignal<boolean>(false)
 	const [getButtonInnerText, setButtonInnerText] = createSignal<'Определить' | 'Ожидайте...'>('Определить')
+	const [getUploadFailed, setUploadFailed] = createSignal<boolean>(false)
+	const [getCoordinatesUndefined, setCoordinatesUndefined] = createSignal<boolean>(false)
 
 	const uploadData = async (): Promise<void> => {
 		const data = new FormData()
 		data.append('lat', getLatitude())
 		data.append('lon', getLongitude())
 		data.append('infectedTreePhoto', getFile() as Blob)
+
+		if (!getFile()) {
+			setUploadFailed(true)
+			return
+		}
+
+		if (!getLatitude() || !getLongitude()) {
+			setCoordinatesUndefined(true)
+			return
+		}
+
 		try {
-			const res = await axiosInstanceAuthorized(sessionStorage.getItem('accessToken') as string).post(`${SERVER_HOST}/records`, data)
-			console.log(res.data);
+			await axiosInstanceAuthorized(sessionStorage.getItem('accessToken') as string).post(`${SERVER_HOST}/records`, data)
+			navigateTo(USER_UPLOADS_ROUTE)
 		} catch (e) {
 			console.log(e);
 		}
@@ -49,6 +63,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		setFile(file)
 		setAnyFileUploaded(true)
 		fileReader.readAsDataURL(file)
+		setUploadFailed(false)
 	}
 
 	const leaveHandler = (e: DragEvent) => {
@@ -62,6 +77,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 	}
 
 	const getCoordinates = async () => {
+		setCoordinatesUndefined(false)
 		setLoading(true)
 		setButtonInnerText('Ожидайте...')
 		try {
@@ -89,8 +105,10 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 				<TextInput placeholder="Широта" value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
 				<TextInput placeholder="Долгота" value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
 				<ActionButton disabled={getLoading()} onclick={getCoordinates}>{getButtonInnerText()}</ActionButton>
+				<FormErrorMessage visible={getCoordinatesUndefined()}>Необходимо определить координаты</FormErrorMessage>
 			</div>
 			<FileUploadArea
+				uploadFailed={getUploadFailed()}
 				anyImageUploaded={getAnyFileUploaded()}
 				ondragstart={dragStartHandler}
 				ondragleave={leaveHandler}

@@ -14,6 +14,7 @@ const FileUploadArea = (props: FileUploadAreaProps): JSX.Element => {
 				ondragstart={props.ondragstart}
 				ondrop={props.ondrop}
 				data-uploaded={props.anyImageUploaded.toString()}
+				data-upload-failed={props.uploadFailed}
 				ondragover={e => e.preventDefault()}
 			>{props.children} или&nbsp;<label class={styles.label} for="infectedTreePhotoInput">выберите файл</label>
 				<input id="infectedTreePhotoInput" class={styles.input} type="file" datatype="image/*" onchange={props.inputFile}/></div>

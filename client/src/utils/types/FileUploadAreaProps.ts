@@ -8,5 +8,6 @@ export type FileUploadAreaProps = {
 	clearInput: () => void
 	imagePreviewURL?: string
 	anyImageUploaded: boolean
+	uploadFailed: boolean
 	children?: JSX.Element
 }
