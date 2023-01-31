@@ -42,7 +42,7 @@
 }
 
 .dropArea[data-uploaded="true"] {
-	outline-color: var(--green);
+	outline-color: var(--green) !important;
 }
 
 .label {
