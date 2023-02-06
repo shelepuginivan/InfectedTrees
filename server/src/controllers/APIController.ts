@@ -84,6 +84,25 @@ class APIController implements IAPIController {
 			}
 		}
 	}
+
+	async getTreesRecordsWithPagination(req: Request, res: Response): Promise<void> {
+		try {
+			const {apiKey, from, to, page, limit} = req.query
+			const recentTreesRecords = await APIService.getTreesRecordsWithPagination(apiKey as string | undefined,
+				from as string | undefined,
+				to as string | undefined,
+				page as number | undefined,
+				limit as number | undefined)
+			res.status(200).json(recentTreesRecords)
+		} catch (e) {
+			if (e instanceof ServerException) {
+				res.status(e.status).json({message: e.message})
+			} else {
+				res.status(500).json({message: `Unexpected server error: ${(e as Error).message}`})
+				console.error(e)
+			}
+		}
+	}
 }
 
 export default new APIController()
