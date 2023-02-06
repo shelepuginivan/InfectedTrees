@@ -11,5 +11,6 @@ APIRouter.get('/files/:filename', FileController.getTreePhotoByFilename)
 APIRouter.get('/trees', APIController.getAllTreesRecords)
 APIRouter.get('/trees/recent', APIController.getRecentTreesRecords)
 APIRouter.get('/trees/date/:date', APIController.getTreesRecordsByDate)
+APIRouter.get('/trees/pagination', APIController.getTreesRecordsWithPagination)
 
 export default APIRouter
