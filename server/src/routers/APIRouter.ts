@@ -10,5 +10,6 @@ APIRouter.post('/', APIController.generateAPIKey)
 APIRouter.get('/files/:filename', FileController.getTreePhotoByFilename)
 APIRouter.get('/trees', APIController.getAllTreesRecords)
 APIRouter.get('/trees/recent', APIController.getRecentTreesRecords)
+APIRouter.get('/trees/date/:date', APIController.getTreesRecordsByDate)
 
 export default APIRouter
