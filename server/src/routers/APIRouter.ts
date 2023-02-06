@@ -8,5 +8,6 @@ const APIRouter: Router = Router()
 APIRouter.get('/', APIController.getAPIKey)
 APIRouter.post('/', APIController.generateAPIKey)
 APIRouter.get('/files/:filename', FileController.getTreePhotoByFilename)
+APIRouter.get('/trees', APIController.getAllTreesRecords)
 
 export default APIRouter
