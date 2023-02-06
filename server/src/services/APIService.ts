@@ -128,6 +128,30 @@ class APIService implements IAPIService {
 
 		return treesRecords.map(record => new InfectedTreeDTO(record))
 	}
+
+	async getTreesRecordsWithPagination(APIKey?: string, from?: string, to?: string, page: number = 1, limit: number = 15) {
+		if (!APIKey) {
+			throw ServerException.BadRequest('apiKey query parameter required')
+		}
+
+		const APIKeyIsValid = await this.validateAPIKey(APIKey)
+
+		if (!APIKeyIsValid) {
+			throw ServerException.Unauthorized('invalid api key')
+		}
+
+		const fromDate = from ? Date.parse(from) : 0
+		const toDate = to ? Date.parse(to) : Infinity
+
+		const treesRecords = await InfectedTree.find({
+			uploadTime: {
+				$gte: fromDate,
+				$lte: toDate
+			},
+		}).limit(limit).skip(limit * (page - 1))
+
+		return treesRecords.map(record => new InfectedTreeDTO(record))
+	}
 }
 
 export default new APIService()
