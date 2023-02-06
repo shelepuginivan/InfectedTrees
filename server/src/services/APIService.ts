@@ -51,26 +51,20 @@ class APIService implements IAPIService {
 		}
 	}
 
-	async validateAPIKey(APIKey?: string): Promise<boolean> {
-		if (!APIKey) {
-			return false
-		}
-
-		const apiKeyOwner = await User.findOne({APIKey})
-
-		return Boolean(apiKeyOwner)
-	}
-
-	async getAllTreesRecords(APIKey?: string, from?: string, to?: string): Promise<InfectedTreeDTO[]> {
+	async validateAPIKey(APIKey?: string): Promise<void> {
 		if (!APIKey) {
 			throw ServerException.BadRequest('apiKey query parameter required')
 		}
 
-		const APIKeyIsValid = await this.validateAPIKey(APIKey)
+		const apiKeyOwner = await User.findOne({APIKey})
 
-		if (!APIKeyIsValid) {
+		if (!apiKeyOwner) {
 			throw ServerException.Unauthorized('invalid api key')
 		}
+	}
+
+	async getAllTreesRecords(APIKey?: string, from?: string, to?: string): Promise<InfectedTreeDTO[]> {
+		await this.validateAPIKey(APIKey)
 
 		const fromDate = from ? Date.parse(from) : 0
 		const toDate = to ? Date.parse(to) : Infinity
@@ -86,15 +80,7 @@ class APIService implements IAPIService {
 	}
 
 	async getRecentTreesRecords(APIKey?: string): Promise<InfectedTreeDTO[]> {
-		if (!APIKey) {
-			throw ServerException.BadRequest('apiKey query parameter required')
-		}
-
-		const APIKeyIsValid = await this.validateAPIKey(APIKey)
-
-		if (!APIKeyIsValid) {
-			throw ServerException.Unauthorized('invalid api key')
-		}
+		await this.validateAPIKey(APIKey)
 
 		const treesRecords = await InfectedTree.find({
 			uploadTime: {
@@ -107,15 +93,7 @@ class APIService implements IAPIService {
 	}
 
 	async getTreesRecordsByDate(APIKey?: string, date?: string) {
-		if (!APIKey) {
-			throw ServerException.BadRequest('apiKey query parameter required')
-		}
-
-		const APIKeyIsValid = await this.validateAPIKey(APIKey)
-
-		if (!APIKeyIsValid) {
-			throw ServerException.Unauthorized('invalid api key')
-		}
+		await this.validateAPIKey(APIKey)
 
 		const targetDate = date ? Date.parse(date) : Date.now()
 
@@ -130,15 +108,7 @@ class APIService implements IAPIService {
 	}
 
 	async getTreesRecordsWithPagination(APIKey?: string, from?: string, to?: string, page: number = 1, limit: number = 15) {
-		if (!APIKey) {
-			throw ServerException.BadRequest('apiKey query parameter required')
-		}
-
-		const APIKeyIsValid = await this.validateAPIKey(APIKey)
-
-		if (!APIKeyIsValid) {
-			throw ServerException.Unauthorized('invalid api key')
-		}
+		await this.validateAPIKey(APIKey)
 
 		const fromDate = from ? Date.parse(from) : 0
 		const toDate = to ? Date.parse(to) : Infinity
