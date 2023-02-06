@@ -68,6 +68,22 @@ class APIController implements IAPIController {
 			}
 		}
 	}
+
+	async getTreesRecordsByDate(req: Request, res: Response): Promise<void> {
+		try {
+			const apiKey = req.query?.apiKey as string
+			const date = req.params.date
+			const recentTreesRecords = await APIService.getTreesRecordsByDate(apiKey, date)
+			res.status(200).json(recentTreesRecords)
+		} catch (e) {
+			if (e instanceof ServerException) {
+				res.status(e.status).json({message: e.message})
+			} else {
+				res.status(500).json({message: `Unexpected server error: ${(e as Error).message}`})
+				console.error(e)
+			}
+		}
+	}
 }
 
 export default new APIController()
