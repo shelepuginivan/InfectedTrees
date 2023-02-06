@@ -84,6 +84,27 @@ class APIService implements IAPIService {
 
 		return treesRecords.map(record => new InfectedTreeDTO(record))
 	}
+
+	async getRecentTreesRecords(APIKey?: string): Promise<InfectedTreeDTO[]> {
+		if (!APIKey) {
+			throw ServerException.BadRequest('apiKey query parameter required')
+		}
+
+		const APIKeyIsValid = await this.validateAPIKey(APIKey)
+
+		if (!APIKeyIsValid) {
+			throw ServerException.Unauthorized('invalid api key')
+		}
+
+		const treesRecords = await InfectedTree.find({
+			uploadTime: {
+				$gte: Date.now() - 1000 * 60 * 60 * 24,
+				$lte: Date.now()
+			},
+		})
+
+		return treesRecords.map(record => new InfectedTreeDTO(record))
+	}
 }
 
 export default new APIService()
