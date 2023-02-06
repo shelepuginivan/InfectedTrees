@@ -3,7 +3,7 @@ import {Request, Response} from "express";
 import APIService from "../services/APIService";
 import ServerException from "../exceptions/ServerException";
 
-class APIController implements IAPIController{
+class APIController implements IAPIController {
 	async generateAPIKey(req: Request, res: Response): Promise<void> {
 		try {
 			const accessToken = req.headers.authorization?.split(' ')[1]
@@ -18,11 +18,32 @@ class APIController implements IAPIController{
 			}
 		}
 	}
+
 	async getAPIKey(req: Request, res: Response): Promise<void> {
 		try {
 			const accessToken = req.headers.authorization?.split(' ')[1]
 			const userData = await APIService.getAPIKey(accessToken)
 			res.status(200).json(userData)
+		} catch (e) {
+			if (e instanceof ServerException) {
+				res.status(e.status).json({message: e.message})
+			} else {
+				res.status(500).json({message: `Unexpected server error: ${(e as Error).message}`})
+				console.error(e)
+			}
+		}
+	}
+
+	async getAllTreesRecords(req: Request, res: Response): Promise<void> {
+		try {
+			const {apiKey, from, to} = req.query
+
+			const requestedTreesRecords = await APIService.getAllTreesRecords(
+				apiKey as string | undefined,
+				from as string | undefined,
+				to as string | undefined)
+
+			res.status(200).json(requestedTreesRecords)
 		} catch (e) {
 			if (e instanceof ServerException) {
 				res.status(e.status).json({message: e.message})
