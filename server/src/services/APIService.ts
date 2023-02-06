@@ -4,6 +4,8 @@ import ServerException from "../exceptions/ServerException";
 import TokenService from "./TokenService";
 import generateApiKey from 'generate-api-key'
 import User from "../models/User";
+import InfectedTreeDTO from "../dtos/InfectedTreeDTO";
+import InfectedTree from "../models/InfectedTree";
 
 class APIService implements IAPIService {
 	async generateAPIKey(accessToken?: string): Promise<{user: UserDTO, key: string}> {
@@ -47,6 +49,40 @@ class APIService implements IAPIService {
 			user: new UserDTO(user),
 			key: user.APIKey
 		}
+	}
+
+	async validateAPIKey(APIKey?: string): Promise<boolean> {
+		if (!APIKey) {
+			return false
+		}
+
+		const apiKeyOwner = await User.findOne({APIKey})
+
+		return Boolean(apiKeyOwner)
+	}
+
+	async getAllTreesRecords(APIKey?: string, from?: string, to?: string): Promise<InfectedTreeDTO[]> {
+		if (!APIKey) {
+			throw ServerException.BadRequest('apiKey query parameter required')
+		}
+
+		const APIKeyIsValid = await this.validateAPIKey(APIKey)
+
+		if (!APIKeyIsValid) {
+			throw ServerException.Unauthorized('invalid api key')
+		}
+
+		const fromDate = from ? Date.parse(from) : 0
+		const toDate = to ? Date.parse(to) : Infinity
+
+		const treesRecords = await InfectedTree.find({
+			uploadTime: {
+				$gte: fromDate,
+				$lte: toDate
+			},
+		})
+
+		return treesRecords.map(record => new InfectedTreeDTO(record))
 	}
 }
 
