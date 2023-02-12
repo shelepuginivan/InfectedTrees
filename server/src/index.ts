@@ -18,6 +18,14 @@ app.use(cors({
 	origin: process.env.CLIENT_HOST,
 	credentials: true
 }))
+app.use('/api/trees/', cors({
+	origin: '*',
+	credentials: false
+}))
+app.use('/api/files/', cors({
+	origin: '*',
+	credentials: false
+}))
 app.use(json())
 app.use(cookieParser())
 app.use(fileUpload())
