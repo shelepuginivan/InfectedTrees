@@ -1,0 +1,19 @@
+.intro {
+	background: center / cover url("../../assets/homepage-bg.jpg");
+	display: flex;
+	height: calc(100vh - 100px);
+	width: 100%;
+	padding: 40px;
+	align-items: center;
+	justify-content: right;
+}
+
+.intro h1 {
+	font-size: 4.1rem;
+	font-family: sans-serif;
+	color: #fff;
+}
+
+.intro h1 i {
+	color: var(--dark-green);
+}
