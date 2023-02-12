@@ -1,4 +1,5 @@
 export const SERVER_HOST = 'http://localhost:8000'
+export const GRAFIOZ_DOC = 'http://grafioz.myopencity.org/files/ulmus_booklet.pdf'
 
 // Routes
 
