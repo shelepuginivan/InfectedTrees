@@ -6,6 +6,7 @@ import Redirect from "./Redirect";
 import {HOME_ROUTE, SERVER_HOST} from "../utils/consts";
 import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";
 import {AxiosError} from "axios";
+import HomePage from "../pages/HomePage";
 
 
 const AppRouter = (): JSX.Element => {
@@ -44,7 +45,7 @@ const AppRouter = (): JSX.Element => {
 				<Header/>
 					<Routes>
 						{authorizedRoutes.map(item => <Route path={item.route} component={item.component}/>)}
-						<Route path={'/'} element={<div></div>}/>
+						<Route path={HOME_ROUTE} element={<HomePage/>}/>
 					</Routes>
 			</Router>
 		</Show>
