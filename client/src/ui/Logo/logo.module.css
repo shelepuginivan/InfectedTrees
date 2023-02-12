@@ -1,0 +1,13 @@
+.logo {
+	display: flex;
+	width: fit-content;
+	text-decoration: none;
+	align-items: center;
+}
+
+.logo h1 {
+	color: #000;
+	text-decoration: none;
+	font-family: sans-serif;
+	margin-left: 10px;
+}
