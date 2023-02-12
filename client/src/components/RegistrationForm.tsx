@@ -8,7 +8,7 @@ import PasswordInput from "../ui/PasswordInput/PasswordInput";
 import SubmitButton from "../ui/SubmitButton/SubmitButton";
 import {A} from "@solidjs/router";
 import styles from '../css/form.module.css'
-import Logo from "../ui/Logo";
+import Logo from "../ui/Logo/Logo";
 import {navigateTo} from "../utils/navigateTo";
 import FormErrorMessage from "../ui/FormErrorMessage/FormErrorMessage";
 import {validateEmail} from "../utils/validateEmail";

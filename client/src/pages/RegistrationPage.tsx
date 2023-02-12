@@ -1,5 +1,5 @@
 import {JSX} from 'solid-js'
-import AuthFormContainer from '../components/AuthFormContainer'
+import AuthFormContainer from '../components/AuthFormContainer/AuthFormContainer'
 import styles from '../css/authPage.module.css'
 import RegistrationForm from "../components/RegistrationForm";
 
