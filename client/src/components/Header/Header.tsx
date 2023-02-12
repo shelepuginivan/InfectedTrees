@@ -1,7 +1,7 @@
 import {JSX} from 'solid-js'
 import {A} from '@solidjs/router'
 import styles from './header.module.css'
-import Logo from "../../ui/Logo";
+import Logo from "../../ui/Logo/Logo";
 import LoginLink from "../../ui/LoginLink/LoginLink";
 import RegistrationLink from "../../ui/RegistrationLink/RegistrationLink";
 import {PROFILE_ROUTE, UPLOAD_ROUTE, USER_UPLOADS_ROUTE} from "../../utils/consts";
