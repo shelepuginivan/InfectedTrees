@@ -4,6 +4,6 @@ import { render } from 'solid-js/web';
 import './index.css'
 import './css/variables.css'
 import App from './App'
-import '../src/fonts/icomoon/style.css'
+import './assets/fonts/icomoon/style.css'
 
 render(() => <App />, document.getElementById('root') as HTMLElement);
