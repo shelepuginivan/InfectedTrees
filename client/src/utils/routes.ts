@@ -1,5 +1,12 @@
 import {RouteDependency} from "./types/RouteDependency";
-import {HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, PROFILE_ROUTE, UPLOAD_ROUTE, USER_UPLOADS_ROUTE} from "./consts";
+import {
+	HOME_ROUTE,
+	LOGIN_ROUTE,
+	REGISTRATION_ROUTE,
+	PROFILE_ROUTE,
+	UPLOAD_ROUTE,
+	USER_UPLOADS_ROUTE
+} from "./consts";
 import LoginPage from "../pages/LoginPage";
 import RegistrationPage from "../pages/RegistrationPage";
 import HomePage from "../pages/HomePage";
@@ -23,6 +30,10 @@ export const unauthorizedRoutes: RouteDependency[] = [
 ]
 
 export const authorizedRoutes: RouteDependency[] = [
+	{
+		route: HOME_ROUTE,
+		component: HomePage
+	},
 	{
 		route: PROFILE_ROUTE,
 		component: ProfilePage
