@@ -1,16 +1,16 @@
 import {createSignal, JSX} from 'solid-js'
 import styles from '../css/form.module.css'
-import TextInput from "../ui/TextInput/TextInput";
-import PasswordInput from "../ui/PasswordInput/PasswordInput";
-import SubmitButton from "../ui/SubmitButton/SubmitButton";
-import {axiosInstanceUnauthorized} from "../utils/axiosInstanceUnauthorized";
-import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from "../utils/consts";
-import Logo from "../ui/Logo/Logo";
-import {A} from "@solidjs/router";
-import {navigateTo} from "../utils/navigateTo";
-import {validateEmail} from "../utils/validateEmail";
-import FormErrorMessage from "../ui/FormErrorMessage/FormErrorMessage";
-import {AxiosError} from "axios";
+import TextInput from '../ui/TextInput/TextInput'
+import PasswordInput from '../ui/PasswordInput/PasswordInput'
+import SubmitButton from '../ui/SubmitButton/SubmitButton'
+import {axiosInstanceUnauthorized} from '../utils/axiosInstanceUnauthorized'
+import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from '../utils/consts'
+import Logo from '../ui/Logo/Logo'
+import {A} from '@solidjs/router'
+import {navigateTo} from '../utils/navigateTo'
+import {validateEmail} from '../utils/validateEmail'
+import FormErrorMessage from '../ui/FormErrorMessage/FormErrorMessage'
+import {AxiosError} from 'axios'
 
 const LoginForm = (): JSX.Element => {
 	const [getEmail, setEmail] = createSignal<string>('')
@@ -20,13 +20,13 @@ const LoginForm = (): JSX.Element => {
 	const login = async () => {
 		if (!(getEmail() && getPassword())) {
 			setLoginFailed(true)
-			setErrorMessage("Заполните все поля")
+			setErrorMessage('Заполните все поля')
 			return
 		}
 
 		if (!validateEmail(getEmail())) {
 			setLoginFailed(true)
-			setErrorMessage("Некорректный Email")
+			setErrorMessage('Некорректный Email')
 			return
 		}
 
@@ -46,7 +46,7 @@ const LoginForm = (): JSX.Element => {
 		} catch (e) {
 			if (e instanceof AxiosError) {
 				setLoginFailed(true)
-				setErrorMessage("Неверный Email или пароль")
+				setErrorMessage('Неверный Email или пароль')
 			}
 		}
 
@@ -61,7 +61,7 @@ const LoginForm = (): JSX.Element => {
 			<FormErrorMessage visible={getLoginFailed()}>{getErrorMessage}</FormErrorMessage>
 			<p>Ещё нет аккаунта? <A href={REGISTRATION_ROUTE}>Зарегистрируйтесь</A></p>
 		</form>
-	);
-};
+	)
+}
 
-export default LoginForm;
+export default LoginForm
