@@ -92,7 +92,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		}
 	}
 
-	const inputFile = (e: InputEvent) => {
+	const inputFile = (e: Event) => {
 		const file = ((e.target as HTMLInputElement).files as FileList)[0]
 		fileReader.readAsDataURL(file)
 		setFile(_ => file)
