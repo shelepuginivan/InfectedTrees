@@ -1,4 +1,4 @@
-import {JSX} from "solid-js";
+import {JSX} from 'solid-js'
 
 export type FileUploadAreaProps = {
 	ondragstart: (e: DragEvent) => void
