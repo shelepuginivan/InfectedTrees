@@ -7,7 +7,7 @@ const Logo = (): JSX.Element => {
 	return (
 		<A href={HOME_ROUTE} class={styles.logo}>
 			<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">
-				<image href="/src/assets/logo.svg"></image>
+				<image href="/src/assets/favicon.svg"></image>
 			</svg>
 			<h1>Infected<br/>Trees</h1>
 		</A>
