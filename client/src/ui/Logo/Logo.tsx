@@ -1,6 +1,6 @@
-import {JSX} from "solid-js";
-import {HOME_ROUTE} from "../../utils/consts";
-import {A} from "@solidjs/router";
+import {JSX} from 'solid-js'
+import {HOME_ROUTE} from '../../utils/consts'
+import {A} from '@solidjs/router'
 import styles from './logo.module.css'
 
 const Logo = (): JSX.Element => {
@@ -11,7 +11,7 @@ const Logo = (): JSX.Element => {
 			</svg>
 			<h1>Infected<br/>Trees</h1>
 		</A>
-	);
-};
+	)
+}
 
-export default Logo;
+export default Logo

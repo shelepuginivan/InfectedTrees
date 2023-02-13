@@ -1,5 +1,5 @@
 import {JSX} from 'solid-js'
-import {FileUploadAreaProps} from "../../utils/types/FileUploadAreaProps";
+import {FileUploadAreaProps} from '../../utils/types/FileUploadAreaProps'
 import styles from './fileUploadArea.module.css'
 
 const FileUploadArea = (props: FileUploadAreaProps): JSX.Element => {
@@ -19,7 +19,7 @@ const FileUploadArea = (props: FileUploadAreaProps): JSX.Element => {
 			>{props.children} или&nbsp;<label class={styles.label} for="infectedTreePhotoInput">выберите файл</label>
 				<input id="infectedTreePhotoInput" class={styles.input} type="file" datatype="image/*" onchange={props.inputFile}/></div>
 		</div>
-	);
-};
+	)
+}
 
-export default FileUploadArea;
+export default FileUploadArea
