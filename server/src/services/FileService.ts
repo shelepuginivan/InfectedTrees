@@ -10,18 +10,18 @@ class FileService implements IFileService {
 		// so mimetype is 'image/<extension>'
 		const extension = file.mimetype.replace('image/', '.')
 		const filename = `${crypto.randomUUID()}${extension}`
-		const filepath = path.join(__dirname, '..', '..', 'files', filename)
+		const filepath = path.join(process.env.FILE_DIRECTORY as string, filename)
 		await file.mv(filepath)
 		return filename
 	}
 
 	async rewriteFile(filename: string, file: fileUpload.UploadedFile): Promise<void> {
-		const filepath = path.join(__dirname, '..', '..', 'files', filename)
+		const filepath = path.join(process.env.FILE_DIRECTORY as string, filename)
 		await file.mv(filepath)
 	}
 
 	async deleteFile(filename: string): Promise<void> {
-		const filepath = path.join(__dirname, '..', '..', 'files', filename)
+		const filepath = path.join(process.env.FILE_DIRECTORY as string, filename)
 		await rm(filepath)
 	}
 }
