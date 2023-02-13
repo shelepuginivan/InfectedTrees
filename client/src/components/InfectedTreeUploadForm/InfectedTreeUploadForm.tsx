@@ -60,10 +60,12 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 			return
 		}
 		const file = e.dataTransfer.files[0]
-		setFile(file)
-		setAnyFileUploaded(true)
-		fileReader.readAsDataURL(file)
-		setUploadFailed(false)
+		if (file instanceof File && file.type.includes("image/")) {
+			setFile(file as any)
+			setAnyFileUploaded(true)
+			fileReader.readAsDataURL(file)
+			setUploadFailed(false)
+		}
 	}
 
 	const leaveHandler = (e: DragEvent) => {
