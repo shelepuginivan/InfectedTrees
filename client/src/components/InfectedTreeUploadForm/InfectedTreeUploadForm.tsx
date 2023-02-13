@@ -60,7 +60,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 			return
 		}
 		const file = e.dataTransfer.files[0]
-		if (file instanceof File && file.type.includes("image/")) {
+		if (file instanceof File && file.type.includes('image/')) {
 			setFile(_ => file)
 			setAnyFileUploaded(true)
 			fileReader.readAsDataURL(file)
