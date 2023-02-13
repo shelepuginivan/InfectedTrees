@@ -12,7 +12,7 @@ const BaseUserInfo = (): JSX.Element => {
 			<p>{email}</p>
 			<LogoutButton>Выйти</LogoutButton>
 		</Container>
-	);
-};
+	)
+}
 
-export default BaseUserInfo;
+export default BaseUserInfo

@@ -1,14 +1,14 @@
-import {createSignal, JSX} from "solid-js";
-import FileUploadArea from "../../ui/FileUploadArea/FileUploadArea";
+import {createSignal, JSX} from 'solid-js'
+import FileUploadArea from '../../ui/FileUploadArea/FileUploadArea'
 import styles from './infectedTreeUploadForm.module.css'
-import {getCurrentPosition} from "../../utils/getCurrentPosition";
-import TextInput from "../../ui/TextInput/TextInput";
-import ActionButton from "../../ui/ActionButton/ActionButton";
-import SubmitButton from "../../ui/SubmitButton/SubmitButton";
-import {axiosInstanceAuthorized} from "../../utils/axiosInstanceAuthorized";
-import {SERVER_HOST, USER_UPLOADS_ROUTE} from "../../utils/consts";
-import {navigateTo} from "../../utils/navigateTo";
-import FormErrorMessage from "../../ui/FormErrorMessage/FormErrorMessage";
+import {getCurrentPosition} from '../../utils/getCurrentPosition'
+import TextInput from '../../ui/TextInput/TextInput'
+import ActionButton from '../../ui/ActionButton/ActionButton'
+import SubmitButton from '../../ui/SubmitButton/SubmitButton'
+import {axiosInstanceAuthorized} from '../../utils/axiosInstanceAuthorized'
+import {SERVER_HOST, USER_UPLOADS_ROUTE} from '../../utils/consts'
+import {navigateTo} from '../../utils/navigateTo'
+import FormErrorMessage from '../../ui/FormErrorMessage/FormErrorMessage'
 
 const InfectedTreeUploadForm = (): JSX.Element => {
 	const [getAnyFileUploaded, setAnyFileUploaded] = createSignal<boolean>(false)
@@ -41,7 +41,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 			await axiosInstanceAuthorized(sessionStorage.getItem('accessToken') as string).post(`${SERVER_HOST}/records`, data)
 			navigateTo(USER_UPLOADS_ROUTE)
 		} catch (e) {
-			console.log(e);
+			console.log(e)
 		}
 	}
 
@@ -54,14 +54,14 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		e.preventDefault()
 	}
 
-	const dropHandler = (e: any) => {
+	const dropHandler = (e: DragEvent) => {
 		e.preventDefault()
 		if (!e.dataTransfer) {
 			return
 		}
 		const file = e.dataTransfer.files[0]
 		if (file instanceof File && file.type.includes("image/")) {
-			setFile(file as any)
+			setFile(_ => file)
 			setAnyFileUploaded(true)
 			fileReader.readAsDataURL(file)
 			setUploadFailed(false)
@@ -92,10 +92,10 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		}
 	}
 
-	const inputFile = (e: any) => {
+	const inputFile = (e: InputEvent) => {
 		const file = ((e.target as HTMLInputElement).files as FileList)[0]
 		fileReader.readAsDataURL(file)
-		setFile(file as any)
+		setFile(_ => file)
 		setAnyFileUploaded(true)
 	}
 
@@ -121,7 +121,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 			>Перетащите фото</FileUploadArea>
 			<SubmitButton onclick={uploadData}>Отправить</SubmitButton>
 		</form>
-	);
-};
+	)
+}
 
-export default InfectedTreeUploadForm;
+export default InfectedTreeUploadForm

@@ -6,7 +6,7 @@ const AuthFormContainer = (props: ParentProps): JSX.Element => {
 		<div class={styles.authFormContainer}>
 			{props.children}
 		</div>
-)
+	)
 }
 
 export default AuthFormContainer
