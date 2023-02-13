@@ -16,8 +16,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	max-width: 20%;
-	width: 20%;
+	max-width: 60%;
+	width: fit-content;
 }
 
 .authLinks {
@@ -31,6 +31,7 @@
 	color: darkgreen;
 	text-decoration: none;
 	font-size: 24px;
+	margin-inline: 10px;
 }
 
 .headerLink:hover {
