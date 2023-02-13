@@ -1,5 +1,5 @@
-import {JSX} from "solid-js";
-import AppRouter from "./components/AppRouter";
+import {JSX} from 'solid-js'
+import AppRouter from './components/AppRouter'
 
 const App = (): JSX.Element => {
 	return (
@@ -7,4 +7,4 @@ const App = (): JSX.Element => {
 	)
 }
 
-export default App;
+export default App
