@@ -1,12 +1,12 @@
 import bcrypt, {genSaltSync} from 'bcrypt'
-import crypto from "crypto";
-import User from "../models/User";
-import ServerException from "../exceptions/ServerException";
-import UserDTO from "../dtos/UserDTO";
-import MailService from "./MailService";
-import TokenService from "./TokenService";
-import tokenService from "./TokenService";
-import {JwtPayload} from "jsonwebtoken";
+import crypto from 'crypto'
+import User from '../models/User'
+import ServerException from '../exceptions/ServerException'
+import UserDTO from '../dtos/UserDTO'
+import MailService from './MailService'
+import TokenService from './TokenService'
+import tokenService from './TokenService'
+import {JwtPayload} from 'jsonwebtoken'
 
 class AuthService {
 	async registration(firstname: string, lastname: string, email: string, password: string) {

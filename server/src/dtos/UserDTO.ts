@@ -1,8 +1,8 @@
 class UserDTO implements IUserDTO {
 	id: string
-	firstname: string;
-	lastname: string;
-	email: string;
+	firstname: string
+	lastname: string
+	email: string
 	isActivated: boolean
 	organization?: string
 	phoneNumber?: number

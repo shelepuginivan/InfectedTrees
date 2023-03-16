@@ -1,8 +1,8 @@
-import {IUserService} from "../interfaces/IUserService";
-import ServerException from "../exceptions/ServerException";
-import TokenService from "./TokenService";
-import User from "../models/User";
-import UserDTO from "../dtos/UserDTO";
+import {IUserService} from '../interfaces/IUserService'
+import ServerException from '../exceptions/ServerException'
+import TokenService from './TokenService'
+import User from '../models/User'
+import UserDTO from '../dtos/UserDTO'
 
 class UserService implements IUserService {
 	async updateUserData(organization: string, birthdate: number, phoneNumber: number, accessToken?: string): Promise<UserDTO> {

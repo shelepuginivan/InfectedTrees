@@ -1,4 +1,4 @@
-import UserDTO from "../dtos/UserDTO";
+import UserDTO from '../dtos/UserDTO'
 
 export interface IAPIService {
 	generateAPIKey(accessToken?: string): Promise<{user: UserDTO, key: string}>

@@ -1,5 +1,5 @@
 import jwt, {JwtPayload} from 'jsonwebtoken'
-import Token from "../models/Token";
+import Token from '../models/Token'
 
 class TokenService {
 	generateAccessToken(payload: IUserDTO) {

@@ -1,11 +1,11 @@
-import {IAPIService} from "../interfaces/IAPIService";
-import UserDTO from "../dtos/UserDTO";
-import ServerException from "../exceptions/ServerException";
-import TokenService from "./TokenService";
+import {IAPIService} from '../interfaces/IAPIService'
+import UserDTO from '../dtos/UserDTO'
+import ServerException from '../exceptions/ServerException'
+import TokenService from './TokenService'
 import generateApiKey from 'generate-api-key'
-import User from "../models/User";
-import InfectedTreeDTO from "../dtos/InfectedTreeDTO";
-import InfectedTree from "../models/InfectedTree";
+import User from '../models/User'
+import InfectedTreeDTO from '../dtos/InfectedTreeDTO'
+import InfectedTree from '../models/InfectedTree'
 
 class APIService implements IAPIService {
 	async generateAPIKey(accessToken?: string): Promise<{user: UserDTO, key: string}> {
@@ -107,7 +107,7 @@ class APIService implements IAPIService {
 		return treesRecords.map(record => new InfectedTreeDTO(record))
 	}
 
-	async getTreesRecordsWithPagination(APIKey?: string, from?: string, to?: string, page: number = 1, limit: number = 15) {
+	async getTreesRecordsWithPagination(APIKey?: string, from?: string, to?: string, page = 1, limit = 15) {
 		await this.validateAPIKey(APIKey)
 
 		const fromDate = from ? Date.parse(from) : 0

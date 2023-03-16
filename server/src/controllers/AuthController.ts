@@ -1,9 +1,9 @@
-import {Request, Response} from "express";
+import {Request, Response} from 'express'
 import {IAuthController} from '../interfaces/IAuthController'
-import AuthService from "../services/AuthService";
-import ServerException from "../exceptions/ServerException";
-import TokenService from "../services/TokenService";
-import AuthDTO from "../dtos/AuthDTO";
+import AuthService from '../services/AuthService'
+import ServerException from '../exceptions/ServerException'
+import TokenService from '../services/TokenService'
+import AuthDTO from '../dtos/AuthDTO'
 
 class AuthController implements IAuthController {
 	async registration(req: Request, res: Response): Promise<void> {

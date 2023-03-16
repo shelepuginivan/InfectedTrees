@@ -1,9 +1,9 @@
-import ServerException from "../exceptions/ServerException";
-import InfectedTree from "../models/InfectedTree";
-import InfectedTreeDTO from "../dtos/InfectedTreeDTO";
-import {IInfectedTreeCreationData} from "../interfaces/IInfectedTreeCreationData";
-import TokenService from "./TokenService";
-import FileService from "./FileService"
+import ServerException from '../exceptions/ServerException'
+import InfectedTree from '../models/InfectedTree'
+import InfectedTreeDTO from '../dtos/InfectedTreeDTO'
+import {IInfectedTreeCreationData} from '../interfaces/IInfectedTreeCreationData'
+import TokenService from './TokenService'
+import FileService from './FileService'
 
 class InfectedTreeService {
 	async getAllUsersWrites(accessToken?: string): Promise<InfectedTreeDTO[]> {

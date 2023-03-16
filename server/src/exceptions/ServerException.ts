@@ -15,16 +15,16 @@ class ServerException extends Error {
 	}
 
 	static Unauthorized(message: string): ServerException {
-			return new ServerException(401, message)
-		}
+		return new ServerException(401, message)
+	}
 
 	static Forbidden(message: string): ServerException {
-			return new ServerException(403, message)
-		}
+		return new ServerException(403, message)
+	}
 
 	static InternalServerError(message: string): ServerException {
-			return new ServerException(500, message)
-		}
+		return new ServerException(500, message)
+	}
 }
 
 export default ServerException

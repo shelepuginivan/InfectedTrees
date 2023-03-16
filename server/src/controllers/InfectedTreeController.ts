@@ -1,10 +1,10 @@
-import {Request, Response} from "express";
-import {IInfectedTreeController} from "../interfaces/IInfectedTreeController";
-import ServerException from "../exceptions/ServerException";
-import InfectedTreeService from "../services/InfectedTreeService";
-import InfectedTreeDTO from "../dtos/InfectedTreeDTO";
-import {IInfectedTreeCreationData} from "../interfaces/IInfectedTreeCreationData";
-import { UploadedFile } from "express-fileupload";
+import {Request, Response} from 'express'
+import {IInfectedTreeController} from '../interfaces/IInfectedTreeController'
+import ServerException from '../exceptions/ServerException'
+import InfectedTreeService from '../services/InfectedTreeService'
+import InfectedTreeDTO from '../dtos/InfectedTreeDTO'
+import {IInfectedTreeCreationData} from '../interfaces/IInfectedTreeCreationData'
+import { UploadedFile } from 'express-fileupload'
 
 class InfectedTreeController implements IInfectedTreeController {
 	async getAllUsersRecords(req: Request, res: Response): Promise<void> {

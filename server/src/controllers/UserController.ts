@@ -1,7 +1,7 @@
 import {Request, Response} from 'express'
-import UserDTO from "../dtos/UserDTO";
-import UserService from "../services/UserService";
-import ServerException from "../exceptions/ServerException";
+import UserDTO from '../dtos/UserDTO'
+import UserService from '../services/UserService'
+import ServerException from '../exceptions/ServerException'
 
 class UserController {
 	async updateUserData(req: Request, res: Response): Promise<void> {

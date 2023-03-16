@@ -1,5 +1,5 @@
-import {Router} from 'express';
-import InfectedTreeController from "../controllers/InfectedTreeController";
+import {Router} from 'express'
+import InfectedTreeController from '../controllers/InfectedTreeController'
 
 const infectedTreeRouter: Router = Router()
 

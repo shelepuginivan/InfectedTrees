@@ -1,7 +1,7 @@
-import {IAPIController} from "../interfaces/IAPIController";
-import {Request, Response} from "express";
-import APIService from "../services/APIService";
-import ServerException from "../exceptions/ServerException";
+import {IAPIController} from '../interfaces/IAPIController'
+import {Request, Response} from 'express'
+import APIService from '../services/APIService'
+import ServerException from '../exceptions/ServerException'
 
 class APIController implements IAPIController {
 	async generateAPIKey(req: Request, res: Response): Promise<void> {

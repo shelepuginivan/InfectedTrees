@@ -1,6 +1,6 @@
 class AuthDTO implements IAuthDTO {
-	accessToken: string;
-	user: IUserDTO;
+	accessToken: string
+	user: IUserDTO
 
 	constructor(data: any) {
 		this.accessToken = data.accessToken
