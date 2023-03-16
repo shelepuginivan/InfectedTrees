@@ -1,4 +1,6 @@
-
+<div align="center">
+	<img src="logo.png" alt="logo">
+</div>
 
 # Infected Trees
 
