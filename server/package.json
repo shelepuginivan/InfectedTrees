@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "dev": "nodemon",
     "build": "tsc",
-    "start": "node src/index.js"
+    "start": "node dist/index.js"
   },
   "keywords": [
     "ecology",
