@@ -17,7 +17,6 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 	const [getLatitude, setLatitude] = createSignal<string>('')
 	const [getLongitude, setLongitude] = createSignal<string>('')
 	const [getLoading, setLoading] = createSignal<boolean>(false)
-	const [getButtonInnerText, setButtonInnerText] = createSignal<'Определить' | 'Ожидайте...'>('Определить')
 	const [getUploadFailed, setUploadFailed] = createSignal<boolean>(false)
 	const [getCoordinatesUndefined, setCoordinatesUndefined] = createSignal<boolean>(false)
 
@@ -61,7 +60,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		}
 		const file = e.dataTransfer.files[0]
 		if (file instanceof File && file.type.includes('image/')) {
-			setFile(_ => file)
+			setFile(file)
 			setAnyFileUploaded(true)
 			fileReader.readAsDataURL(file)
 			setUploadFailed(false)
@@ -81,24 +80,21 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 	const getCoordinates = async () => {
 		setCoordinatesUndefined(false)
 		setLoading(true)
-		setButtonInnerText('Ожидайте...')
 		try {
 			const position = await getCurrentPosition()
 			setLatitude(position.coords.latitude.toString())
 			setLongitude(position.coords.longitude.toString())
 		} finally {
 			setLoading(false)
-			setButtonInnerText('Определить')
 		}
 	}
 
 	const inputFile = (e: Event) => {
 		const file = ((e.target as HTMLInputElement).files as FileList)[0]
 		fileReader.readAsDataURL(file)
-		setFile(_ => file)
+		setFile(file)
 		setAnyFileUploaded(true)
 	}
-
 
 	return (
 		<form class={styles.form}>
@@ -106,7 +102,7 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 			<div>
 				<TextInput placeholder="Широта" value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
 				<TextInput placeholder="Долгота" value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
-				<ActionButton disabled={getLoading()} onclick={getCoordinates}>{getButtonInnerText()}</ActionButton>
+				<ActionButton disabled={getLoading()} onclick={getCoordinates}>{getLoading() ? 'Ожидайте...' : 'Определить'}</ActionButton>
 				<FormErrorMessage visible={getCoordinatesUndefined()}>Необходимо определить координаты</FormErrorMessage>
 			</div>
 			<FileUploadArea
@@ -115,10 +111,10 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 				ondragstart={dragStartHandler}
 				ondragleave={leaveHandler}
 				ondrop={dropHandler}
-				inputFile={inputFile}
+				onchange={inputFile}
 				clearInput={clearInput}
 				imagePreviewURL={getFileURL()}
-			>Перетащите фото</FileUploadArea>
+			/>
 			<SubmitButton onclick={uploadData}>Отправить</SubmitButton>
 		</form>
 	)
