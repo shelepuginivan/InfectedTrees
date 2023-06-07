@@ -12,7 +12,7 @@ type PropsType = {
 const FileUploadArea = (props: PropsType): JSX.Element => {
 	return (
 		<div class={styles.container}>
-			<div class={styles.preview} data-visible={Boolean(props.imagePreviewURL).toString()} >
+			<div class={styles.preview} data-visible={props.anyImageUploaded.toString()} >
 				<img class={styles.image} src={props.imagePreviewURL} alt=""/>
 				<button type="button" class={styles.btnReset} onclick={props.clearInput}>x</button>
 			</div>
