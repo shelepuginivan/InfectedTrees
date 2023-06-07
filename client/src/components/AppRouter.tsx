@@ -11,7 +11,7 @@ import Redirect from './Redirect'
 
 const AppRouter = (): JSX.Element => {
 	const authorized = Boolean(sessionStorage.getItem('accessToken'))
-	const [getAuthorized, setAuthorized] = createSignal<boolean>(authorized)
+	const [getAuthorized, setAuthorized] = createSignal(authorized)
 
 	onMount(async () => {
 		try {
