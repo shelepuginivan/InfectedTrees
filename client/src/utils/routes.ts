@@ -1,18 +1,18 @@
-import {RouteDependency} from './types/RouteDependency'
+import HomePage from '../pages/HomePage'
+import LoginPage from '../pages/LoginPage'
+import ProfilePage from '../pages/ProfilePage'
+import RegistrationPage from '../pages/RegistrationPage'
+import UploadPage from '../pages/UploadPage'
+import UserUploadsPage from '../pages/UserUploadsPage'
 import {
 	HOME_ROUTE,
 	LOGIN_ROUTE,
-	REGISTRATION_ROUTE,
 	PROFILE_ROUTE,
+	REGISTRATION_ROUTE,
 	UPLOAD_ROUTE,
 	USER_UPLOADS_ROUTE
 } from './consts'
-import LoginPage from '../pages/LoginPage'
-import RegistrationPage from '../pages/RegistrationPage'
-import HomePage from '../pages/HomePage'
-import ProfilePage from '../pages/ProfilePage'
-import UploadPage from '../pages/UploadPage'
-import UserUploadsPage from '../pages/UserUploadsPage'
+import { RouteDependency } from './types/RouteDependency'
 
 export const unauthorizedRoutes: RouteDependency[] = [
 	{

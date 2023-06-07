@@ -1,16 +1,17 @@
-import {createSignal, JSX} from 'solid-js'
+import { A } from '@solidjs/router'
+import { AxiosError } from 'axios'
+import { createSignal, JSX } from 'solid-js'
+
 import styles from '../css/form.module.css'
-import TextInput from '../ui/TextInput/TextInput'
+import FormErrorMessage from '../ui/FormErrorMessage/FormErrorMessage'
+import Logo from '../ui/Logo/Logo'
 import PasswordInput from '../ui/PasswordInput/PasswordInput'
 import SubmitButton from '../ui/SubmitButton/SubmitButton'
-import {axiosInstanceUnauthorized} from '../utils/axiosInstanceUnauthorized'
-import {HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST} from '../utils/consts'
-import Logo from '../ui/Logo/Logo'
-import {A} from '@solidjs/router'
-import {navigateTo} from '../utils/navigateTo'
-import {validateEmail} from '../utils/validateEmail'
-import FormErrorMessage from '../ui/FormErrorMessage/FormErrorMessage'
-import {AxiosError} from 'axios'
+import TextInput from '../ui/TextInput/TextInput'
+import { axiosInstanceUnauthorized } from '../utils/axiosInstanceUnauthorized'
+import { HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST } from '../utils/consts'
+import { navigateTo } from '../utils/navigateTo'
+import { validateEmail } from '../utils/validateEmail'
 
 const LoginForm = (): JSX.Element => {
 	const [getEmail, setEmail] = createSignal<string>('')
@@ -55,8 +56,8 @@ const LoginForm = (): JSX.Element => {
 	return (
 		<form class={styles.form}>
 			<Logo/>
-			<TextInput placeholder="E-mail" value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
-			<PasswordInput placeholder="Пароль" value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
+			<TextInput placeholder='E-mail' value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
+			<PasswordInput placeholder='Пароль' value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
 			<SubmitButton onclick={login}>Войти</SubmitButton>
 			<FormErrorMessage visible={getLoginFailed()}>{getErrorMessage}</FormErrorMessage>
 			<p>Ещё нет аккаунта? <A href={REGISTRATION_ROUTE}>Зарегистрируйтесь</A></p>

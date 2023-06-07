@@ -1,11 +1,12 @@
-import {JSX} from 'solid-js'
-import HomePageSection from '../../ui/HomePageSection/HomePageSection'
+import { JSX } from 'solid-js'
+
 import logoImage from '../../assets/logo-image.jpg'
+import HomePageSection from '../../ui/HomePageSection/HomePageSection'
 
 const SectionSolution = (): JSX.Element => {
 	return (
 		<HomePageSection>
-			<img src={logoImage} alt="Логотип Infected Trees"/>
+			<img src={logoImage} alt='Логотип Infected Trees'/>
 			<div>
 				<h2>Решение</h2>
 				<h1>О проекте</h1>

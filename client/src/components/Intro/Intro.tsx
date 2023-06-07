@@ -1,4 +1,5 @@
-import {JSX} from 'solid-js'
+import { JSX } from 'solid-js'
+
 import styles from './intro.module.css'
 
 const Intro = (): JSX.Element => {

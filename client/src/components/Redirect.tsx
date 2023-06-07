@@ -1,4 +1,4 @@
-import {useNavigate} from '@solidjs/router'
+import { useNavigate } from '@solidjs/router'
 
 type navigatorProps = {
 	to: string
@@ -7,7 +7,7 @@ type navigatorProps = {
 
 const Redirect = (props: navigatorProps): any => {
 	const navigate = useNavigate()
-	return navigate(props.to, {replace: props.replace})
+	return navigate(props.to, { replace: props.replace })
 }
 
 export default Redirect

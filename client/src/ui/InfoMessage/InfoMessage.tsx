@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './InfoMessage.module.css'
 
 const InfoMessage = (props: ParentProps): JSX.Element => {

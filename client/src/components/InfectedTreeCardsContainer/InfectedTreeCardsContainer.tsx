@@ -1,12 +1,13 @@
-import {createSignal, JSX, onMount, Show} from 'solid-js'
-import {axiosInstanceAuthorized} from '../../utils/axiosInstanceAuthorized'
-import {SERVER_HOST} from '../../utils/consts'
-import InfectedTreeCard from '../InfectedTreeCard/InfectedTreeCard'
-import styles from './infectedTreeCardsContainer.module.css'
-import {interceptor} from '../../utils/interceptor'
+import { createSignal, JSX, onMount, Show } from 'solid-js'
+
 import Center from '../../ui/Center/Center'
 import InfoMessage from '../../ui/InfoMessage/InfoMessage'
-import {InfectedTreeCardProps} from '../../utils/types/InfectedTreeCardProps'
+import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
+import { SERVER_HOST } from '../../utils/consts'
+import { interceptor } from '../../utils/interceptor'
+import { InfectedTreeCardProps } from '../../utils/types/InfectedTreeCardProps'
+import InfectedTreeCard from '../InfectedTreeCard/InfectedTreeCard'
+import styles from './infectedTreeCardsContainer.module.css'
 
 const InfectedTreeCardsContainer = (): JSX.Element => {
 	const [getUserRecords, setUserRecords] = createSignal<InfectedTreeCardProps[]>([])

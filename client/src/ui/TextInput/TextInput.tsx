@@ -1,4 +1,5 @@
-import {JSX} from 'solid-js'
+import { JSX } from 'solid-js'
+
 import styles from './textInput.module.css'
 
 const TextInput = (props: JSX.InputHTMLAttributes<any>): JSX.Element => {

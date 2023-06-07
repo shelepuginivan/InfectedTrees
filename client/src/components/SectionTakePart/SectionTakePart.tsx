@@ -1,8 +1,9 @@
-import {JSX} from 'solid-js'
-import HomePageSection from '../../ui/HomePageSection/HomePageSection'
-import {Link} from '@solidjs/router'
-import {GRAFIOZ_DOC, REGISTRATION_ROUTE} from '../../utils/consts'
+import { Link } from '@solidjs/router'
+import { JSX } from 'solid-js'
+
 import takePart from '../../assets/takepart.jpg'
+import HomePageSection from '../../ui/HomePageSection/HomePageSection'
+import { GRAFIOZ_DOC, REGISTRATION_ROUTE } from '../../utils/consts'
 
 const SectionTakePart = (): JSX.Element => {
 	return (
@@ -12,12 +13,12 @@ const SectionTakePart = (): JSX.Element => {
 				<h1>Как принять участие</h1>
 				<blockquote>
 					<p>1. <Link href={REGISTRATION_ROUTE}>Зарегистрируйтесь</Link> в системе</p>
-					<p>2. Ознакомьтесь с <a target="_blank" href={GRAFIOZ_DOC}>пособием</a> по изучению графиоза</p>
+					<p>2. Ознакомьтесь с <a target='_blank' href={GRAFIOZ_DOC}>пособием</a> по изучению графиоза</p>
 					<p>3. Фотографируйте больные деревья на телефон</p>
 					<p>4. Загружайте фото в сервис</p>
 				</blockquote>
 			</div>
-			<img src={takePart} alt="Примите участие"/>
+			<img src={takePart} alt='Примите участие'/>
 		</HomePageSection>
 	)
 }

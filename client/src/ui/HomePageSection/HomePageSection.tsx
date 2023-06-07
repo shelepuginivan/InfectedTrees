@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './homePageSection.module.css'
 
 const SectionSolution = (props: ParentProps): JSX.Element => {

@@ -1,16 +1,17 @@
-import {createSignal, JSX, onMount, Show} from 'solid-js'
+import { createSignal, JSX, onMount, Show } from 'solid-js'
+
+import ActionButton from '../../ui/ActionButton/ActionButton'
+import Container from '../../ui/Container/Container'
 import DateInput from '../../ui/DateInput/DateInput'
-import TextInput from '../../ui/TextInput/TextInput'
 import PhoneInput from '../../ui/PhoneInput/PhoneInput'
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
-import ActionButton from '../../ui/ActionButton/ActionButton'
+import TextInput from '../../ui/TextInput/TextInput'
+import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
+import { SERVER_HOST } from '../../utils/consts'
+import { formatDateInput } from '../../utils/formatDateInput'
+import { formatDateRequest } from '../../utils/formatDateRequest'
+import { interceptor } from '../../utils/interceptor'
 import styles from './additionalInfo.module.css'
-import {axiosInstanceAuthorized} from '../../utils/axiosInstanceAuthorized'
-import {SERVER_HOST} from '../../utils/consts'
-import {formatDateInput} from '../../utils/formatDateInput'
-import {interceptor} from '../../utils/interceptor'
-import {formatDateRequest} from '../../utils/formatDateRequest'
-import Container from '../../ui/Container/Container'
 
 const AdditionalInfo = (): JSX.Element => {
 	const [getIsEditingMode, setIsEditingMode] = createSignal<boolean>(false)
@@ -20,7 +21,7 @@ const AdditionalInfo = (): JSX.Element => {
 
 	const getAdditionalInfo = async () => {
 		const userResponse = await axiosInstanceAuthorized(sessionStorage.getItem('accessToken') as string).get(`${SERVER_HOST}/users`)
-		const {phoneNumber, organization, birthdate} = userResponse.data
+		const { phoneNumber, organization, birthdate } = userResponse.data
 		setBirthdate(birthdate ?? '')
 		setPhoneNumber(phoneNumber ?? '')
 		setOrganizationName(organization ?? '')
@@ -35,7 +36,7 @@ const AdditionalInfo = (): JSX.Element => {
 			phoneNumber: getPhoneNumber()
 		}
 		const updateResponse = await axiosInstanceAuthorized(sessionStorage.getItem('accessToken') as string).put(`${SERVER_HOST}/users`, additionalData)
-		const {organization, phoneNumber, birthdate} = updateResponse.data
+		const { organization, phoneNumber, birthdate } = updateResponse.data
 		setBirthdate(birthdate)
 		setOrganizationName(organization)
 		setPhoneNumber(phoneNumber)
@@ -58,9 +59,9 @@ const AdditionalInfo = (): JSX.Element => {
 		}>
 			<Container>
 				<h2>Дополнительная информация</h2>
-				<DateInput placeholder="День рождения" value={formatDateInput(getBirthdate())} onchange={e => setBirthdate((e.target as HTMLInputElement).value)}/>
-				<TextInput placeholder="Название организации" value={getOrganizationName()} onchange={e => setOrganizationName((e.target as HTMLInputElement).value)}/>
-				<PhoneInput placeholder="Телефон" value={getPhoneNumber()} onchange={e => setPhoneNumber((e.target as HTMLInputElement).value)}/>
+				<DateInput placeholder='День рождения' value={formatDateInput(getBirthdate())} onchange={e => setBirthdate((e.target as HTMLInputElement).value)}/>
+				<TextInput placeholder='Название организации' value={getOrganizationName()} onchange={e => setOrganizationName((e.target as HTMLInputElement).value)}/>
+				<PhoneInput placeholder='Телефон' value={getPhoneNumber()} onchange={e => setPhoneNumber((e.target as HTMLInputElement).value)}/>
 				<SubmitButton onclick={submit}>Сохранить изменения</SubmitButton>
 			</Container>
 		</Show>

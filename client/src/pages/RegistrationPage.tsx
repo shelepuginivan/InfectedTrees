@@ -1,7 +1,8 @@
-import {JSX} from 'solid-js'
+import { JSX } from 'solid-js'
+
 import AuthFormContainer from '../components/AuthFormContainer/AuthFormContainer'
-import styles from '../css/authPage.module.css'
 import RegistrationForm from '../components/RegistrationForm'
+import styles from '../css/authPage.module.css'
 
 const RegistrationPage = (): JSX.Element => {
 	return (

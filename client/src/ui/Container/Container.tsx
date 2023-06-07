@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './Container.module.css'
 
 const Container = (props: ParentProps): JSX.Element => {

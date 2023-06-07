@@ -1,10 +1,11 @@
-import {createSignal, JSX, onMount, Show} from 'solid-js'
+import { createSignal, JSX, onMount, Show } from 'solid-js'
+
 import ActionButton from '../../ui/ActionButton/ActionButton'
-import {axiosInstanceAuthorized} from '../../utils/axiosInstanceAuthorized'
-import {SERVER_HOST} from '../../utils/consts'
 import Code from '../../ui/Code/Code'
-import {interceptor} from '../../utils/interceptor'
 import Container from '../../ui/Container/Container'
+import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
+import { SERVER_HOST } from '../../utils/consts'
+import { interceptor } from '../../utils/interceptor'
 
 const ApiInfo = (): JSX.Element => {
 	const userHasAPIKey: boolean = sessionStorage.getItem('hasAPIKey') === 'true'

@@ -1,4 +1,5 @@
-import {JSX} from 'solid-js'
+import { JSX } from 'solid-js'
+
 import styles from './fileUploadArea.module.css'
 
 type PropsType = {
@@ -13,8 +14,8 @@ const FileUploadArea = (props: PropsType): JSX.Element => {
 	return (
 		<div class={styles.container}>
 			<div class={styles.preview} data-visible={props.anyImageUploaded.toString()} >
-				<img class={styles.image} src={props.imagePreviewURL} alt=""/>
-				<button type="button" class={styles.btnReset} onclick={props.clearInput}>x</button>
+				<img class={styles.image} src={props.imagePreviewURL} alt=''/>
+				<button type='button' class={styles.btnReset} onclick={props.clearInput}>x</button>
 			</div>
 			<div
 				class={styles.dropArea}
@@ -23,8 +24,8 @@ const FileUploadArea = (props: PropsType): JSX.Element => {
 				data-uploaded={props.anyImageUploaded.toString()}
 				data-upload-failed={props.uploadFailed}
 				ondragover={e => e.preventDefault()}
-			>Перетащите фото или&nbsp;<label class={styles.label} for="infectedTreePhotoInput">выберите файл</label>
-				<input id="infectedTreePhotoInput" class={styles.input} type="file" datatype="image/*" onchange={props.onchange}/></div>
+			>Перетащите фото или&nbsp;<label class={styles.label} for='infectedTreePhotoInput'>выберите файл</label>
+				<input id='infectedTreePhotoInput' class={styles.input} type='file' datatype='image/*' onchange={props.onchange}/></div>
 		</div>
 	)
 }

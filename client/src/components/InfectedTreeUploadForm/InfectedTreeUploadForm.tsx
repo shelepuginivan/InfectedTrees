@@ -1,24 +1,25 @@
-import {createSignal, JSX} from 'solid-js'
-import FileUploadArea from '../../ui/FileUploadArea/FileUploadArea'
-import styles from './infectedTreeUploadForm.module.css'
-import {getCurrentPosition} from '../../utils/getCurrentPosition'
-import TextInput from '../../ui/TextInput/TextInput'
+import { createSignal, JSX } from 'solid-js'
+
 import ActionButton from '../../ui/ActionButton/ActionButton'
-import SubmitButton from '../../ui/SubmitButton/SubmitButton'
-import {axiosInstanceAuthorized} from '../../utils/axiosInstanceAuthorized'
-import {SERVER_HOST, USER_UPLOADS_ROUTE} from '../../utils/consts'
-import {navigateTo} from '../../utils/navigateTo'
+import FileUploadArea from '../../ui/FileUploadArea/FileUploadArea'
 import FormErrorMessage from '../../ui/FormErrorMessage/FormErrorMessage'
+import SubmitButton from '../../ui/SubmitButton/SubmitButton'
+import TextInput from '../../ui/TextInput/TextInput'
+import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
+import { SERVER_HOST, USER_UPLOADS_ROUTE } from '../../utils/consts'
+import { getCurrentPosition } from '../../utils/getCurrentPosition'
+import { navigateTo } from '../../utils/navigateTo'
+import styles from './infectedTreeUploadForm.module.css'
 
 const InfectedTreeUploadForm = (): JSX.Element => {
-	const [getAnyFileUploaded, setAnyFileUploaded] = createSignal<boolean>(false)
+	const [getAnyFileUploaded, setAnyFileUploaded] = createSignal(false)
 	const [getFile, setFile] = createSignal<File | undefined>(undefined)
 	const [getFileURL, setFileUrl] = createSignal<string | undefined>(undefined)
-	const [getLatitude, setLatitude] = createSignal<string>('')
-	const [getLongitude, setLongitude] = createSignal<string>('')
-	const [getLoading, setLoading] = createSignal<boolean>(false)
-	const [getUploadFailed, setUploadFailed] = createSignal<boolean>(false)
-	const [getCoordinatesUndefined, setCoordinatesUndefined] = createSignal<boolean>(false)
+	const [getLatitude, setLatitude] = createSignal('')
+	const [getLongitude, setLongitude] = createSignal('')
+	const [getLoading, setLoading] = createSignal(false)
+	const [getUploadFailed, setUploadFailed] = createSignal(false)
+	const [getCoordinatesUndefined, setCoordinatesUndefined] = createSignal(false)
 
 	const uploadData = async (): Promise<void> => {
 		const data = new FormData()
@@ -100,8 +101,8 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		<form class={styles.form}>
 			<h2>Координаты</h2>
 			<div>
-				<TextInput placeholder="Широта" value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
-				<TextInput placeholder="Долгота" value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
+				<TextInput placeholder='Широта' value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
+				<TextInput placeholder='Долгота' value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
 				<ActionButton disabled={getLoading()} onclick={getCoordinates}>{getLoading() ? 'Ожидайте...' : 'Определить'}</ActionButton>
 				<FormErrorMessage visible={getCoordinatesUndefined()}>Необходимо определить координаты</FormErrorMessage>
 			</div>

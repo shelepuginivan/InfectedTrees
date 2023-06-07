@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './Center.module.css'
 
 const Center = (props: ParentProps): JSX.Element => {

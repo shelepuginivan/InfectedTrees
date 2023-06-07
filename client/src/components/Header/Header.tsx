@@ -1,10 +1,11 @@
-import {JSX} from 'solid-js'
-import {A} from '@solidjs/router'
-import styles from './header.module.css'
-import Logo from '../../ui/Logo/Logo'
+import { A } from '@solidjs/router'
+import { JSX } from 'solid-js'
+
 import LoginLink from '../../ui/LoginLink/LoginLink'
+import Logo from '../../ui/Logo/Logo'
 import RegistrationLink from '../../ui/RegistrationLink/RegistrationLink'
-import {PROFILE_ROUTE, UPLOAD_ROUTE, USER_UPLOADS_ROUTE} from '../../utils/consts'
+import { PROFILE_ROUTE, UPLOAD_ROUTE, USER_UPLOADS_ROUTE } from '../../utils/consts'
+import styles from './header.module.css'
 
 const Header = (): JSX.Element => {
 	const authorized = Boolean(sessionStorage.getItem('accessToken'))

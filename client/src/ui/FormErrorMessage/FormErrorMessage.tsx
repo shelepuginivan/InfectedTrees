@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './FormErrorMessage.module.css'
 
 const FormErrorMessage = (props: ParentProps & {visible: boolean}): JSX.Element =>

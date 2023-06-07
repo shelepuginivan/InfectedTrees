@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './TwoColumns.module.css'
 
 const TwoColumns = (props: ParentProps): JSX.Element => {

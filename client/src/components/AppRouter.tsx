@@ -1,11 +1,12 @@
-import {createSignal, JSX, onMount, Show} from 'solid-js'
-import {Route, Router, Routes} from '@solidjs/router'
-import {authorizedRoutes, unauthorizedRoutes} from '../utils/routes'
+import { Route, Router, Routes } from '@solidjs/router'
+import { AxiosError } from 'axios'
+import { createSignal, JSX, onMount, Show } from 'solid-js'
+
+import { axiosInstanceUnauthorized } from '../utils/axiosInstanceUnauthorized'
+import { HOME_ROUTE, SERVER_HOST } from '../utils/consts'
+import { authorizedRoutes, unauthorizedRoutes } from '../utils/routes'
 import Header from './Header/Header'
 import Redirect from './Redirect'
-import {HOME_ROUTE, SERVER_HOST} from '../utils/consts'
-import {axiosInstanceUnauthorized} from '../utils/axiosInstanceUnauthorized'
-import {AxiosError} from 'axios'
 
 
 const AppRouter = (): JSX.Element => {
@@ -44,7 +45,7 @@ const AppRouter = (): JSX.Element => {
 				<Header/>
 				<Routes>
 					{authorizedRoutes.map(item => <Route path={item.route} component={item.component}/>)}
-					<Route path="*" element={<Redirect to={HOME_ROUTE} replace={true}/>}/>
+					<Route path='*' element={<Redirect to={HOME_ROUTE} replace={true}/>}/>
 				</Routes>
 			</Router>
 		</Show>

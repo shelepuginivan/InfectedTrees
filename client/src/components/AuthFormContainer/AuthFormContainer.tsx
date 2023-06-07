@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './authFormContainer.module.css'
 
 const AuthFormContainer = (props: ParentProps): JSX.Element => {

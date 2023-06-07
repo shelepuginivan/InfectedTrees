@@ -1,4 +1,5 @@
-import {JSX} from 'solid-js'
+import { JSX } from 'solid-js'
+
 import grafiozExample from '../../assets/grafioz-example.jpg'
 import HomePageSection from '../../ui/HomePageSection/HomePageSection'
 
@@ -19,7 +20,7 @@ const SectionProblem = (): JSX.Element => {
 					диктует необходимость вырубки больных деревьев.
 				</p>
 			</div>
-			<img src={grafiozExample} alt="Заражённый вяз"/>
+			<img src={grafiozExample} alt='Заражённый вяз'/>
 		</HomePageSection>
 	)
 }

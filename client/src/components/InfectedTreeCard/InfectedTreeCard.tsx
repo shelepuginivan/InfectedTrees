@@ -1,11 +1,12 @@
-import {JSX} from 'solid-js'
-import {InfectedTreeCardProps} from '../../utils/types/InfectedTreeCardProps'
+import { JSX } from 'solid-js'
+
+import { InfectedTreeCardProps } from '../../utils/types/InfectedTreeCardProps'
 import styles from './infectedTreeCard.module.css'
 
 const InfectedTreeCard = (props: InfectedTreeCardProps): JSX.Element => {
 	return (
 		<div class={styles.card}>
-			<img class={styles.image} src={props.photoURL} alt=""/>
+			<img class={styles.image} src={props.photoURL} alt=''/>
 			<div class={styles.data}>
 				<p>Широта: {props.lat}</p>
 				<p>Долгота: {props.lon}</p>

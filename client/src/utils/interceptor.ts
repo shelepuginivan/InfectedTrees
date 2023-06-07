@@ -1,7 +1,8 @@
-import {AxiosError} from 'axios'
-import {navigateTo} from './navigateTo'
-import {LOGIN_ROUTE, SERVER_HOST} from './consts'
-import {axiosInstanceAuthorized} from './axiosInstanceAuthorized'
+import { AxiosError } from 'axios'
+
+import { axiosInstanceAuthorized } from './axiosInstanceAuthorized'
+import { LOGIN_ROUTE, SERVER_HOST } from './consts'
+import { navigateTo } from './navigateTo'
 
 export const interceptor = async (requestFunction: () => void, accessToken: string): Promise<void> => {
 	try {

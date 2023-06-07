@@ -1,4 +1,5 @@
-import {JSX, ParentProps} from 'solid-js'
+import { JSX, ParentProps } from 'solid-js'
+
 import styles from './MainHeader.module.css'
 
 const MainHeader = (props: ParentProps): JSX.Element => {
