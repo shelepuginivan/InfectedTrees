@@ -1,5 +1,4 @@
-.dateInput {
-	text-align: right;
+.input {
 	height: 30px;
 	width: 100%;
 	margin-top: 10px;
@@ -8,10 +7,4 @@
 	font-size: 14px;
 	outline: var(--light-gray-border);
 	border: none;
-}
-
-.dateInput::before {
-	content: attr(placeholder) !important;
-	color: darkgrey;
-	margin-right: 0.5em;
 }

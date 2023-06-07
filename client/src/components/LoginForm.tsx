@@ -4,10 +4,10 @@ import { createSignal, JSX } from 'solid-js'
 
 import styles from '../css/form.module.css'
 import FormErrorMessage from '../ui/FormErrorMessage/FormErrorMessage'
+import Input from '../ui/Input/Input'
 import Logo from '../ui/Logo/Logo'
 import PasswordInput from '../ui/PasswordInput/PasswordInput'
 import SubmitButton from '../ui/SubmitButton/SubmitButton'
-import TextInput from '../ui/TextInput/TextInput'
 import { axiosInstanceUnauthorized } from '../utils/axiosInstanceUnauthorized'
 import { HOME_ROUTE, REGISTRATION_ROUTE, SERVER_HOST } from '../utils/consts'
 import { navigateTo } from '../utils/navigateTo'
@@ -56,7 +56,7 @@ const LoginForm = (): JSX.Element => {
 	return (
 		<form class={styles.form}>
 			<Logo/>
-			<TextInput placeholder='E-mail' value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
+			<Input placeholder='E-mail' value={getEmail()} onchange={e => setEmail((e.target as HTMLInputElement).value)}/>
 			<PasswordInput placeholder='Пароль' value={getPassword()} onchange={e => setPassword((e.target as HTMLInputElement).value)}/>
 			<SubmitButton onclick={login}>Войти</SubmitButton>
 			<FormErrorMessage visible={getLoginFailed()}>{getErrorMessage}</FormErrorMessage>

@@ -3,8 +3,8 @@ import { createSignal, JSX } from 'solid-js'
 import ActionButton from '../../ui/ActionButton/ActionButton'
 import FileUploadArea from '../../ui/FileUploadArea/FileUploadArea'
 import FormErrorMessage from '../../ui/FormErrorMessage/FormErrorMessage'
+import Input from '../../ui/Input/Input'
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
-import TextInput from '../../ui/TextInput/TextInput'
 import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
 import { SERVER_HOST, USER_UPLOADS_ROUTE } from '../../utils/consts'
 import { getCurrentPosition } from '../../utils/getCurrentPosition'
@@ -101,8 +101,8 @@ const InfectedTreeUploadForm = (): JSX.Element => {
 		<form class={styles.form}>
 			<h2>Координаты</h2>
 			<div>
-				<TextInput placeholder='Широта' value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
-				<TextInput placeholder='Долгота' value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
+				<Input placeholder='Широта' value={getLatitude()} onchange={e => setLatitude((e.target as HTMLInputElement).value)}/>
+				<Input placeholder='Долгота' value={getLongitude()} onchange={e => setLongitude((e.target as HTMLInputElement).value)}/>
 				<ActionButton disabled={getLoading()} onclick={getCoordinates}>{getLoading() ? 'Ожидайте...' : 'Определить'}</ActionButton>
 				<FormErrorMessage visible={getCoordinatesUndefined()}>Необходимо определить координаты</FormErrorMessage>
 			</div>

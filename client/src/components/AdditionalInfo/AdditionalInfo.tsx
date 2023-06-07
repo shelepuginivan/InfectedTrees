@@ -2,10 +2,8 @@ import { createSignal, JSX, onMount, Show } from 'solid-js'
 
 import ActionButton from '../../ui/ActionButton/ActionButton'
 import Container from '../../ui/Container/Container'
-import DateInput from '../../ui/DateInput/DateInput'
-import PhoneInput from '../../ui/PhoneInput/PhoneInput'
+import Input from '../../ui/Input/Input'
 import SubmitButton from '../../ui/SubmitButton/SubmitButton'
-import TextInput from '../../ui/TextInput/TextInput'
 import { axiosInstanceAuthorized } from '../../utils/axiosInstanceAuthorized'
 import { SERVER_HOST } from '../../utils/consts'
 import { formatDateInput } from '../../utils/formatDateInput'
@@ -59,9 +57,9 @@ const AdditionalInfo = (): JSX.Element => {
 		}>
 			<Container>
 				<h2>Дополнительная информация</h2>
-				<DateInput placeholder='День рождения' value={formatDateInput(getBirthdate())} onchange={e => setBirthdate((e.target as HTMLInputElement).value)}/>
-				<TextInput placeholder='Название организации' value={getOrganizationName()} onchange={e => setOrganizationName((e.target as HTMLInputElement).value)}/>
-				<PhoneInput placeholder='Телефон' value={getPhoneNumber()} onchange={e => setPhoneNumber((e.target as HTMLInputElement).value)}/>
+				<Input placeholder='День рождения' value={formatDateInput(getBirthdate())} onchange={e => setBirthdate((e.target as HTMLInputElement).value)} type='date'/>
+				<Input placeholder='Название организации' value={getOrganizationName()} onchange={e => setOrganizationName((e.target as HTMLInputElement).value)}/>
+				<Input placeholder='Телефон' value={getPhoneNumber()} onchange={e => setPhoneNumber((e.target as HTMLInputElement).value)} type='tel'/>
 				<SubmitButton onclick={submit}>Сохранить изменения</SubmitButton>
 			</Container>
 		</Show>
