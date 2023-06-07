@@ -2,13 +2,25 @@ import { createSignal, JSX } from 'solid-js'
 
 import styles from './passwordInput.module.css'
 
-const PasswordInput = (props: JSX.InputHTMLAttributes<any>): JSX.Element => {
-	const [visible, setVisible] = createSignal<boolean>(false)
+const PasswordInput = (props: JSX.InputHTMLAttributes<HTMLInputElement>): JSX.Element => {
+	const [getVisible, setVisible] = createSignal(false)
 
 	return (
 		<div class={styles.inputWrapper}>
-			<input class={styles.input} placeholder={props.placeholder} value={props.value} onchange={props.onchange} type={visible() ? 'text' : 'password'} />
-			<button class={styles.watchButton} type='button' onClick={() => setVisible(prev => !prev)}><span class={visible() ? 'icon-invisible' : 'icon-visible'}></span></button>
+			<input
+				value={props.value}
+				onchange={props.onchange}
+				placeholder={props.placeholder}
+				type={getVisible() ? 'text' : 'password'}
+				class={styles.input}
+			/>
+			<button
+				onClick={() => setVisible(prev => !prev)}
+				class={styles.watchButton}
+				type='button'
+			>
+				<i class={getVisible() ? 'icon-invisible' : 'icon-visible'}></i>
+			</button>
 		</div>
 	)
 }
