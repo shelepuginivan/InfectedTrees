@@ -1,13 +1,16 @@
 import { useNavigate } from '@solidjs/router'
+import { JSX } from 'solid-js'
 
-type navigatorProps = {
+type PropsType = {
 	to: string
 	replace: boolean
 }
 
-const Redirect = (props: navigatorProps): any => {
+const Redirect = (props: PropsType): JSX.Element => {
 	const navigate = useNavigate()
-	return navigate(props.to, { replace: props.replace })
+	navigate(props.to, { replace: props.replace })
+
+	return
 }
 
 export default Redirect
